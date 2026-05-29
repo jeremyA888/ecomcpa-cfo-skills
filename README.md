@@ -53,19 +53,19 @@ The `ecom-finance-context` skill is the foundation. It creates `.agents/ecom-fin
 After this repository is published on GitHub, install all skills with:
 
 ```bash
-npx skills add jeremya888/ecomcpa-cfo-skills
+npx skills add jeremyA888/ecomcpa-cfo-skills
 ```
 
 Install specific skills with:
 
 ```bash
-npx skills add jeremya888/ecomcpa-cfo-skills --skill thirteen-week-cash-flow cash-flow-forecast kpi-dashboard
+npx skills add jeremyA888/ecomcpa-cfo-skills --skill thirteen-week-cash-flow cash-flow-forecast kpi-dashboard
 ```
 
 List available skills with:
 
 ```bash
-npx skills add jeremya888/ecomcpa-cfo-skills --list
+npx skills add jeremyA888/ecomcpa-cfo-skills --list
 ```
 
 ### Option 2: Claude Code Plugin
@@ -73,7 +73,7 @@ npx skills add jeremya888/ecomcpa-cfo-skills --list
 After this repository is published, add the marketplace and install the plugin:
 
 ```bash
-/plugin marketplace add jeremya888/ecomcpa-cfo-skills
+/plugin marketplace add jeremyA888/ecomcpa-cfo-skills
 /plugin install ecomcpa-cfo-skills
 ```
 
@@ -82,7 +82,7 @@ After this repository is published, add the marketplace and install the plugin:
 Copy the skill folders into an agent skills directory:
 
 ```bash
-git clone https://github.com/jeremya888/ecomcpa-cfo-skills.git
+git clone https://github.com/jeremyA888/ecomcpa-cfo-skills.git
 cd ecomcpa-cfo-skills
 cp -r skills/* .agents/skills/
 ```
