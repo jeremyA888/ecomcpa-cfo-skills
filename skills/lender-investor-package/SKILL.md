@@ -1,6 +1,6 @@
 ---
 name: lender-investor-package
-description: "Prepare evidence packages for ecommerce lenders or investors, including historical financials, projections, use of funds, debt, covenants, collateral, and risks. Use for financing diligence or covenant support. Route routine board or monthly reporting to financial-reporting."
+description: "Prepare evidence packages for ecommerce lenders or investors, including historical financials, projections, use of funds, debt, covenants, collateral, and risks. Use for financing diligence or covenant support after the financing path is selected. Use financing-strategy to compare cash and funding options; route routine reporting to financial-reporting."
 license: MIT
 ---
 
@@ -18,7 +18,7 @@ Choose one branch:
 - **Investor:** financing diligence or update tied to a capital decision. Center historical performance, operating drivers, forecast assumptions, use of proceeds, capitalization, risks, and milestones.
 - **Board:** if no financing or covenant decision is involved, route to `financial-reporting`. Do not make one package serve all three audiences.
 
-Use `thirteen-week-cash-flow` for weekly liquidity support and `cash-flow-forecast` for longer-range scenarios.
+Use `thirteen-week-cash-flow` for weekly liquidity support, `cash-flow-forecast` for longer-range scenarios, and `financing-strategy` to compare instruments or decide whether to use cash before packaging a request.
 
 ## Evidence Gate
 

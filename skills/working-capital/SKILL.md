@@ -1,6 +1,6 @@
 ---
 name: working-capital
-description: "Analyze ecommerce net working capital, inventory days, receivables, processor settlement, payables, cash conversion, and financing constraints. Use for structural cash-release and supplier-term decisions. Use thirteen-week-cash-flow for weekly payment timing and demand-planning for SKU purchases."
+description: "Analyze ecommerce net working capital, inventory days, receivables, processor settlement, payables, and cash conversion. Use for structural cash-release and supplier-term decisions. Use financing-strategy for cash-versus-debt or facility selection, thirteen-week-cash-flow for weekly timing, and demand-planning for SKU purchases."
 license: MIT
 ---
 
@@ -12,7 +12,7 @@ Quantify where operating cash is tied up and distinguish liquidity timing from p
 
 Read `.agents/ecom-finance.md` if it exists. Record entity and account scope, measurement period and as-of date, currency and FX policy, accounting basis, close status, working-capital definition, decision, decision owner, and operational constraints.
 
-Route weekly receipt/payment timing to `thirteen-week-cash-flow`, SKU reorder logic to `demand-planning`, inventory reconciliation to `inventory-cogs`, and debt application/covenant materials to `lender-investor-package`.
+Route weekly receipt/payment timing to `thirteen-week-cash-flow`, SKU reorder logic to `demand-planning`, inventory reconciliation to `inventory-cogs`, cash-versus-debt or facility selection to `financing-strategy`, and debt application/covenant materials to `lender-investor-package`.
 
 ## Evidence Gate
 

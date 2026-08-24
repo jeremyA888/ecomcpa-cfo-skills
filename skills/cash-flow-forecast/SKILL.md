@@ -1,6 +1,6 @@
 ---
 name: cash-flow-forecast
-description: "Build or review a strategic monthly ecommerce cash forecast across inventory, payroll, debt, advertising, launches, and growth. Use for medium-term liquidity, runway, and funding decisions. For tactical weekly receipts and disbursements use thirteen-week-cash-flow; for an integrated operating plan use budget-forecast."
+description: "Build or review a strategic monthly ecommerce cash forecast across inventory, payroll, debt, advertising, launches, and growth. Use for medium-term liquidity and runway. For tactical weekly cash use thirteen-week-cash-flow; for an integrated plan use budget-forecast; to choose cash versus a financing arrangement use financing-strategy."
 license: MIT
 ---
 
@@ -13,7 +13,7 @@ Show when strategic plans create liquidity pressure and which assumptions drive 
 - Read `.agents/ecom-finance.md` if it exists, then state the entity/consolidation scope, monthly forecast horizon, opening as-of date, currency, accounting basis and close status, and the funding or operating decision.
 - Define available cash: bank-reconciled cash available for operations. Show restricted cash, undrawn facilities, reserves, and trapped/entity-specific cash separately.
 - Record the user-supplied minimum cash floor and materiality. If either is absent, show the full result and every variance without inventing a threshold or claiming a breach.
-- Route weekly or 13-week liquidity work to `thirteen-week-cash-flow`, the integrated operating plan to `budget-forecast`, and detailed PO/unit timing to `demand-planning`.
+- Route weekly or 13-week liquidity work to `thirteen-week-cash-flow`, the integrated operating plan to `budget-forecast`, detailed PO/unit timing to `demand-planning`, and cash-versus-financing selection to `financing-strategy`.
 
 ## Evidence Gate
 

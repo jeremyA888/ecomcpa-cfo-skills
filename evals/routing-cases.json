@@ -157,7 +157,7 @@
     "id": "supplier-terms-not-forecast",
     "prompt": "Quantify the cash impact of changing supplier deposits from fifty percent to thirty percent while holding purchase timing constant.",
     "expected": "working-capital",
-    "reject": ["cash-flow-forecast", "pricing-profitability"],
+    "reject": ["cash-flow-forecast", "pricing-profitability", "financing-strategy"],
     "reason": "The isolated lever is supplier terms, a structural working-capital decision."
   },
   {
@@ -192,14 +192,14 @@
     "id": "processor-settlement-lag",
     "prompt": "Map payment processor settlement lags and reserve holds, then quantify their effect on our monthly strategic cash runway.",
     "expected": "cash-flow-forecast",
-    "reject": ["channel-profitability", "finance-tech-stack"],
+    "reject": ["channel-profitability", "finance-tech-stack", "financing-strategy"],
     "reason": "Settlement mechanics are inputs to a requested strategic cash forecast."
   },
   {
     "id": "purchase-plan-cash-timing",
     "prompt": "Translate the approved SKU demand forecast into purchase deposits, final payments, freight, duties, and monthly cash timing.",
     "expected": "demand-planning",
-    "reject": ["budget-forecast", "inventory-cogs"],
+    "reject": ["budget-forecast", "inventory-cogs", "financing-strategy"],
     "reason": "The work begins from SKU demand and turns it into purchase and cash timing."
   },
   {
@@ -241,7 +241,7 @@
     "id": "covenant-source-required",
     "prompt": "Calculate lender covenant headroom only from the signed agreement definitions and reconciled statements, and flag anything the evidence cannot support.",
     "expected": "lender-investor-package",
-    "reject": ["kpi-dashboard", "working-capital"],
+    "reject": ["kpi-dashboard", "working-capital", "financing-strategy"],
     "reason": "Covenant calculations are audience-specific and agreement-controlled."
   },
   {
@@ -250,5 +250,19 @@
     "expected": "budget-forecast",
     "reject": ["financial-reporting", "cash-flow-forecast"],
     "reason": "The primary output is an updated operating forecast and variance bridge."
+  },
+  {
+    "id": "cash-versus-finance-inventory-order",
+    "prompt": "Decide whether to pay an approved inventory order from unrestricted balance-sheet cash, partially draw our revolver, or finance the full order after testing the cash floor, delayed receipts, all-in cost, collateral, covenants, and guarantees.",
+    "expected": "financing-strategy",
+    "reject": ["demand-planning", "thirteen-week-cash-flow", "lender-investor-package"],
+    "reason": "The primary decision is the transaction funding mix, not order quantity, forecast construction, or lender packaging."
+  },
+  {
+    "id": "recurring-capital-structure-choice",
+    "prompt": "Compare supplier terms, a revolving line, an inventory borrowing-base facility, term debt, and owner capital for recurring ecommerce working-capital needs, including downside repayment, all fees, collateral, control, and renewal risk.",
+    "expected": "financing-strategy",
+    "reject": ["working-capital", "cash-flow-forecast", "lender-investor-package"],
+    "reason": "This chooses among capital sources rather than measuring working capital, forecasting runway, or assembling an application."
   }
 ]

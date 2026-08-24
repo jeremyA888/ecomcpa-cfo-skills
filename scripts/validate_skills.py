@@ -279,6 +279,7 @@ def validate_behavior_evals(skill_names: set[str], errors: list[str]) -> None:
         "cash-flow-forecast",
         "finance-tech-stack",
         "financial-reporting",
+        "financing-strategy",
         "internal-controls",
         "inventory-cogs",
         "pricing-profitability",

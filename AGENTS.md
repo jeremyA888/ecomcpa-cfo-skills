@@ -17,6 +17,7 @@ This repository packages portable ecommerce CFO skills. Preserve trust before ad
 - Separate actuals, forecasts, and scenarios; show formulas, sign conventions, allocations, and policy choices.
 - Reconcile to control totals. Quantify open differences and never invent materiality.
 - Do not double count landed cost, variable selling costs, channel receipts, or profit levers.
+- Do not call undrawn credit cash or choose financing from headline APR without dated liquidity, all-in cost, downside repayment, collateral, covenant, and guarantee analysis.
 - Stage work for review. Never authorize posting, payment, access changes, financing submission, or external sending.
 
 ## Data Boundary

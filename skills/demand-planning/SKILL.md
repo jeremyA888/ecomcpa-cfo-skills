@@ -1,6 +1,6 @@
 ---
 name: demand-planning
-description: "Translate an ecommerce unit forecast into SKU replenishment, purchase timing, stockout/overstock risk, and inventory cash needs. Use for demand plans, reorder points, launch quantities, or PO timing. For historical inventory/COGS reconciliation use inventory-cogs; for event-wide planning use peak-season-planning."
+description: "Translate an ecommerce unit forecast into SKU replenishment, purchase timing, stockout/overstock risk, and inventory cash needs. Use for demand plans, reorder points, launch quantities, or PO timing. Use financing-strategy for cash-versus-financing the order, inventory-cogs for historical reconciliation, and peak-season-planning for event-wide planning."
 license: MIT
 ---
 
@@ -12,7 +12,7 @@ Turn uncertain unit demand into explicit replenishment choices without false pre
 
 Read `.agents/ecom-finance.md` if it exists, then state the entity, locations/channels/SKUs in scope, history cutoff and inventory as-of date, forecast horizon and time bucket, currency, accounting basis and close status, service-level or stock policy, and decision. Record the user's materiality/risk threshold; if absent, report every variance and risk without inventing one.
 
-Route historical inventory valuation or GL/subledger differences to `inventory-cogs`, SKU economics to `product-margin`, strategic liquidity to `cash-flow-forecast`, and promotion/peak orchestration to `peak-season-planning`.
+Route historical inventory valuation or GL/subledger differences to `inventory-cogs`, SKU economics to `product-margin`, strategic liquidity to `cash-flow-forecast`, cash-versus-financing the order to `financing-strategy`, and promotion/peak orchestration to `peak-season-planning`.
 
 ## Evidence Gate
 

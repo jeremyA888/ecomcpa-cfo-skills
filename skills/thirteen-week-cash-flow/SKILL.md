@@ -1,6 +1,6 @@
 ---
 name: thirteen-week-cash-flow
-description: "Build, roll forward, or review a direct-method 13-week ecommerce cash forecast from bank availability, processor settlements, collections, AP, inventory, payroll, ads, debt, and owner activity. Use for weekly liquidity decisions; use cash-flow-forecast for strategic monthly planning beyond the near term."
+description: "Build, roll forward, or review a direct-method 13-week ecommerce cash forecast from bank availability, processor settlements, collections, AP, inventory, payroll, ads, debt, and owner activity. Use for weekly liquidity decisions; use cash-flow-forecast for strategic monthly planning and financing-strategy to choose the funding mix."
 license: MIT
 ---
 
@@ -12,7 +12,7 @@ Estimate when available cash may breach a user-approved reserve and identify act
 
 Read `.agents/ecom-finance.md` if it exists. Record entity/account scope, bank cutoff timestamp, 13 weekly ending dates, as-of date, currency and FX policy, cash basis for the forecast, accounting close status, approved minimum reserve, decision owner, and decisions required.
 
-Use this skill for tactical weekly receipts and disbursements. Route strategic monthly, growth, or multi-year scenarios to `cash-flow-forecast`; structural inventory/AR/AP terms to `working-capital`; and SKU purchasing logic to `demand-planning`.
+Use this skill for tactical weekly receipts and disbursements. Route strategic monthly, growth, or multi-year scenarios to `cash-flow-forecast`; cash-versus-financing or facility selection to `financing-strategy`; structural inventory/AR/AP terms to `working-capital`; and SKU purchasing logic to `demand-planning`.
 
 ## Evidence Gate
 

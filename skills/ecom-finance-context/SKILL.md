@@ -70,7 +70,7 @@ Label every substantive value `reported`, `calculated`, `assumption`, or `unavai
 
 Return the proposed or updated context, source register, unresolved conflicts, excluded sensitive items, and a change summary. If evidence is insufficient, add an `Insufficient evidence` section, preserve the schema with `unavailable` fields, and list the minimum follow-up; do not fill gaps from general knowledge.
 
-Route analysis itself to the relevant specialist: `accounting-quality-audit`, `budget-forecast`, `cash-flow-forecast`, `channel-profitability`, `demand-planning`, `finance-tech-stack`, `financial-reporting`, `internal-controls`, `inventory-cogs`, or another installed CFO skill. This skill records approved context; it does not make the underlying decision.
+Route analysis itself to the relevant specialist: `accounting-quality-audit`, `budget-forecast`, `cash-flow-forecast`, `channel-profitability`, `demand-planning`, `finance-tech-stack`, `financial-reporting`, `financing-strategy`, `internal-controls`, `inventory-cogs`, or another installed CFO skill. This skill records approved context; it does not make the underlying decision.
 
 ## Quality Gate
 

@@ -3,9 +3,9 @@
 [![Validate skills](https://github.com/jeremyA888/ecomcpa-cfo-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/jeremyA888/ecomcpa-cfo-skills/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Decision-grade agent workflows for ecommerce finance: cash, forecasting, reporting, inventory, margin, working capital, controls, and capital packages.
+Decision-grade agent workflows for ecommerce finance: cash, forecasting, reporting, inventory, margin, working capital, financing, controls, and capital packages.
 
-These 19 skills are designed to make an agent behave like a careful finance operator, not a confident autocomplete. Each workflow requires a defined decision, source lineage, dated coverage, explicit formulas, labeled assumptions, control checks, and a review-gated deliverable. Missing data stays missing; it never silently becomes zero.
+These 20 skills are designed to make an agent behave like a careful finance operator, not a confident autocomplete. Each workflow requires a defined decision, source lineage, dated coverage, explicit formulas, labeled assumptions, control checks, and a review-gated deliverable. Missing data stays missing; it never silently becomes zero.
 
 ## Install
 
@@ -19,7 +19,7 @@ Inspect the catalog or install selected skills:
 
 ```bash
 npx skills add jeremyA888/ecomcpa-cfo-skills --list
-npx skills add jeremyA888/ecomcpa-cfo-skills --skill thirteen-week-cash-flow product-margin kpi-dashboard
+npx skills add jeremyA888/ecomcpa-cfo-skills --skill thirteen-week-cash-flow financing-strategy product-margin
 ```
 
 For Claude Code, add this repository as a marketplace, then install the namespaced plugin:
@@ -62,6 +62,7 @@ Before writing that file, confirm the repository's visibility and what the user 
 | [demand-planning](skills/demand-planning/) | Turn demand into replenishment and purchase timing | SKU risks, order plan, service assumptions, and cash timing |
 | [peak-season-planning](skills/peak-season-planning/) | Orchestrate finance for a defined peak event | Integrated scenarios, trigger-owned risk register, cadence, and closeout |
 | [working-capital](skills/working-capital/) | Improve structural cash conversion | Defined DIO/DSO/DPO/CCC, quantified levers, and constraint-aware actions |
+| [financing-strategy](skills/financing-strategy/) | Choose cash, partial financing, or a capital structure | Funding scenarios, all-in cost, liquidity/downside test, and recommended mix |
 | [staffing-plan](skills/staffing-plan/) | Test headcount capacity and affordability | Loaded-cost plan, ramp, downside cash, and hiring triggers |
 | [profit-improvement](skills/profit-improvement/) | Prioritize validated profit levers | Non-overlapping EBITDA/cash action portfolio with owners and confidence |
 | [lender-investor-package](skills/lender-investor-package/) | Stage evidence for a lender or investor | Audience-specific package, reconciliations, claims register, and open items |
@@ -71,6 +72,7 @@ Before writing that file, confirm the repository's visibility and what the user 
 ### Routing boundaries that matter
 
 - Use `thirteen-week-cash-flow` for dated weekly receipts and disbursements; use `cash-flow-forecast` for strategic monthly runway.
+- Use `financing-strategy` to choose cash, partial financing, or an instrument; use `lender-investor-package` to assemble materials after the financing path is selected.
 - Use `inventory-cogs` to reconcile the inventory records; use `product-margin` to analyze historical SKU economics; use `pricing-profitability` to test a future commercial change.
 - Use `accounting-quality-audit` to establish whether data is usable; use `internal-controls` to assess how a process prevents or detects error and fraud.
 - Use `kpi-dashboard` to govern definitions and layout; use `financial-reporting` to explain a period's verified results.
@@ -91,7 +93,7 @@ If a spreadsheet, document, or presentation is requested, pair the finance skill
 
 ## Validate the Pack
 
-The repository ships a dependency-free validator plus routing/coexistence and numeric/missing-evidence behavior corpora:
+The repository ships a dependency-free validator plus routing/coexistence and numeric/missing-evidence behavior corpora. All included cases follow a [synthetic-only data boundary](evals/README.md):
 
 ```bash
 python3 scripts/validate_skills.py

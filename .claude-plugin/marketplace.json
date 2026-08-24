@@ -8,15 +8,15 @@
   "plugins": [
     {
       "name": "ecomcpa-cfo-skills",
-      "description": "19 ecommerce CFO skills with evidence, formula, reconciliation, and review controls",
-      "version": "0.2.0",
+      "description": "20 ecommerce CFO skills with evidence, formula, reconciliation, and review controls",
+      "version": "0.3.0",
       "author": {
         "name": "EcomCPA"
       },
       "homepage": "https://ecomcpa.com",
       "repository": "https://github.com/jeremyA888/ecomcpa-cfo-skills",
       "license": "MIT",
-      "keywords": ["ecommerce", "finance", "cfo", "forecasting", "profitability"],
+      "keywords": ["ecommerce", "finance", "cfo", "forecasting", "financing", "profitability"],
       "source": "./"
     }
   ]
