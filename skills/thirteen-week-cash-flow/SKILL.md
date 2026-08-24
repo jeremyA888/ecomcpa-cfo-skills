@@ -1,51 +1,73 @@
 ---
 name: thirteen-week-cash-flow
-description: "Build, update, or review a 13-week cash flow forecast for ecommerce CFO work. Use when the user mentions 13-week cash flow, weekly cash forecast, short-term cash management, cash receipts and disbursements, lender cash reporting, borrowing base support, weekly runway, liquidity crunch, or managing cash around inventory buys, payroll, ads, and debt."
+description: "Build, roll forward, or review a direct-method 13-week ecommerce cash forecast from bank availability, processor settlements, collections, AP, inventory, payroll, ads, debt, and owner activity. Use for weekly liquidity decisions; use cash-flow-forecast for strategic monthly planning beyond the near term."
+license: MIT
 ---
 
 # 13-Week Cash Flow
 
-Build a near-term cash forecast that shows exactly when cash gets tight and what decisions are needed.
+Estimate when available cash may breach a user-approved reserve and identify actions early enough to matter.
 
-## Start Here
+## Establish the Decision Frame
 
-Read `.agents/ecom-finance.md` if it exists. Gather current bank balances, expected channel payouts, AR, AP, payroll dates, ad spend, inventory deposits/final payments, freight, debt payments, owner distributions, credit card due dates, and known large one-time items.
+Read `.agents/ecom-finance.md` if it exists. Record entity/account scope, bank cutoff timestamp, 13 weekly ending dates, as-of date, currency and FX policy, cash basis for the forecast, accounting close status, approved minimum reserve, decision owner, and decisions required.
 
-## Forecast Structure
+Use this skill for tactical weekly receipts and disbursements. Route strategic monthly, growth, or multi-year scenarios to `cash-flow-forecast`; structural inventory/AR/AP terms to `working-capital`; and SKU purchasing logic to `demand-planning`.
 
-Create weekly columns for 13 weeks and these sections:
+## Evidence Gate
 
-- Beginning cash.
-- Cash receipts by source: Shopify, Amazon, wholesale, retail, marketplace, payment processor, AR collections, financing.
-- Operating disbursements: inventory, freight, fulfillment, payroll, ads, software, rent, contractors, professional fees, refunds, and other spend.
-- Financing activity: debt draws, debt payments, interest, owner contributions, and distributions.
-- Ending cash.
-- Minimum cash reserve.
-- Surplus or shortfall vs reserve.
+Create a source register with `line/input`, `source`, `extract date`, `covered period`, `entity/account grain`, `coverage`, and limitation. Include bank reconciliations, processor payout schedules, AR, AP, payroll dates, approved POs, supplier/freight commitments, cards, ads, debt agreements, tax payments, owner activity, and one-time items. Label every value `reported`, `calculated`, `assumption`, or `unavailable`; missing is never zero.
 
-## CFO Review
+Separate actual weeks, the frozen prior forecast, the current forecast, and scenarios. Reconcile opening available cash to banks at the cutoff. Show restricted cash separately and undrawn credit as availability, not cash. Eliminate inter-account and intercompany transfers from consolidated cash flow or show both sides so they net to zero.
 
-For each weekly update:
+Map each economic receipt once. Channel sales are not cash receipts: use the processor/marketplace deposit date and choose either net settlement or gross settlement with fees/refunds shown separately. Never count both channel sales and the related processor deposit.
 
-- Compare actual receipts and disbursements to the prior forecast.
-- Explain the biggest variances.
-- Update the next 13 weeks using the latest sales, inventory, AP, and payroll data.
-- Flag the lowest-cash week.
-- Recommend actions before cash drops below the reserve.
+Use user-defined materiality for variance commentary. Without it, report all actual-versus-prior-forecast variances and let the user choose a review filter. If opening cash cannot be reconciled or material receipt/payment timing is unavailable, issue a provisional schedule with affected rows marked unavailable and a data request; do not report a precise lowest-cash amount.
 
-## Ecommerce Watchouts
+## Direct-Method Model
 
-- Marketplace and payment processor payout timing can create cash gaps even when sales are strong.
-- Inventory deposits, final supplier payments, freight, and duties often hit before revenue arrives.
-- Ad spend and inventory buys can make a profitable growth plan cash-negative in the short term.
-- Credit card due dates can hide a cash crunch until the payment week.
+Display inflows and outflows as positive amounts in their sections and calculate:
 
-## Output
+`ending available cash[t] = beginning available cash[t] + operating receipts[t] - operating disbursements[t] + financing inflows[t] - financing outflows[t]`
+
+`beginning available cash[t+1] = ending available cash[t]`
+
+`headroom[t] = ending available cash[t] - approved minimum reserve[t]`
+
+`variance[t,line] = actual[t,line] - frozen prior forecast[t,line]`
+
+Receipts include dated processor/marketplace settlements, wholesale/retail collections, other AR, and verified other cash inflows. Disbursements include inventory deposits/finals, freight/duties, fulfillment, payroll, ads, refunds, cards, software, rent, contractors, professional fees, taxes, capex, and other payments. Financing shows debt draws, principal, interest/fees, owner contributions, and distributions separately.
+
+For each forecast amount state the timing driver and evidence. Build a downside scenario for decision-critical settlement, sales, inventory, or payment timing, but keep it outside the current forecast. Do not net unrelated receipts and disbursements merely to make the schedule shorter.
+
+## Weekly Control Cycle
+
+At each roll-forward:
+
+1. Freeze and retain the prior version.
+2. Replace completed weeks with bank-reconciled actuals.
+3. Explain actual-versus-prior-forecast and forecast-versus-prior-forecast changes.
+4. Append a new week so the horizon remains 13 weeks.
+5. Recalculate the lowest-cash week, reserve headroom, scenario breaches, and action deadlines.
+
+## Deliverable
 
 Return:
 
-1. A 13-week cash table or spreadsheet-ready structure.
-2. Key assumptions.
-3. Lowest cash week and amount.
-4. Variance notes if updating an existing forecast.
-5. Decision list: delay, accelerate, finance, cut, collect, or negotiate.
+1. A spreadsheet-ready 13-week direct-method table with actual/prior/current/scenario clearly separated.
+2. Opening-cash reconciliation, source register, assumptions, coverage, and unavailable-item schedule.
+3. Variance report with cause, timing/permanent classification, owner, and forecast treatment.
+4. Lowest projected cash and reserve headroom, qualified by evidence status.
+5. An action register with amount, action type, owner, approval, deadline, latest safe decision date, dependency, and downside if missed.
+
+## Quality Gate
+
+- Cross-foot each week and confirm every next-week beginning balance equals the prior ending balance.
+- Tie opening and actual cash to reconciled bank control totals and eliminate transfers.
+- Trace every material forecast row to a dated source or visible assumption.
+- Confirm processor/channel receipts, cards, debt, and owner activity are not double counted or incorrectly netted.
+- Confirm actual, prior forecast, current forecast, and scenario remain separate and no unavailable value is zero.
+
+## Guardrails
+
+Stage forecasts and action options only. Never initiate or delay a payment, draw debt, contact a bank/vendor/customer, change access, submit lender reporting, post/send, or move cash without approval. Do not claim financing, collection, payment deferral, or covenant capacity without evidence. Obtain qualified treasury/accounting review for material liquidity decisions, lender review for agreement reporting, and legal/tax review where required.

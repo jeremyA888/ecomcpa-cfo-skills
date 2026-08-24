@@ -1,0 +1,254 @@
+[
+  {
+    "id": "books-trust-before-board-pack",
+    "prompt": "Our Shopify payouts and inventory balance do not tie to the May close. Can we trust these books enough to prepare a board pack?",
+    "expected": "accounting-quality-audit",
+    "reject": ["financial-reporting", "internal-controls"],
+    "reason": "Reliability must be assessed before narrative reporting or process design."
+  },
+  {
+    "id": "annual-driver-budget",
+    "prompt": "Build a 2027 monthly operating budget by channel with hiring, inventory purchases, and base and downside assumptions for our brand.",
+    "expected": "budget-forecast",
+    "reject": ["cash-flow-forecast", "staffing-plan"],
+    "reason": "The primary job is an integrated operating plan, not a specialist submodel."
+  },
+  {
+    "id": "strategic-monthly-runway",
+    "prompt": "Model our monthly cash runway for the next 18 months under base, downside, and growth cases, including a warehouse expansion.",
+    "expected": "cash-flow-forecast",
+    "reject": ["thirteen-week-cash-flow", "budget-forecast"],
+    "reason": "This is a strategic monthly horizon rather than tactical weekly liquidity."
+  },
+  {
+    "id": "channel-economics",
+    "prompt": "Compare Amazon, Shopify, and wholesale contribution after channel fees, fulfillment, returns, and attributable ads for Q2.",
+    "expected": "channel-profitability",
+    "reject": ["product-margin", "financial-reporting"],
+    "reason": "The requested grain is channel, not SKU or management-report narrative."
+  },
+  {
+    "id": "sku-replenishment",
+    "prompt": "Use twelve months of unit sales, open purchase orders, lead times, and safety stock to recommend SKU reorder dates and quantities.",
+    "expected": "demand-planning",
+    "reject": ["inventory-cogs", "peak-season-planning"],
+    "reason": "The decision is future unit replenishment, not accounting reconciliation or event orchestration."
+  },
+  {
+    "id": "brand-finance-onboarding",
+    "prompt": "Create a reusable finance context file for this brand so later agents understand our channels, systems, accounting basis, and known data gaps.",
+    "expected": "ecom-finance-context",
+    "reject": ["accounting-quality-audit", "finance-tech-stack"],
+    "reason": "The request is to capture governed context rather than analyze reliability or select systems."
+  },
+  {
+    "id": "requirements-first-stack-review",
+    "prompt": "Assess whether QuickBooks, A2X, our inventory app, and BI setup can support a five-day close and SKU margin reporting.",
+    "expected": "finance-tech-stack",
+    "reject": ["internal-controls", "accounting-quality-audit"],
+    "reason": "The primary decision concerns system architecture and fit."
+  },
+  {
+    "id": "monthly-management-pack",
+    "prompt": "Turn our closed June statements and operating reports into a concise monthly management pack with variances, risks, and decisions.",
+    "expected": "financial-reporting",
+    "reject": ["lender-investor-package", "kpi-dashboard"],
+    "reason": "The source numbers are closed and the job is management communication."
+  },
+  {
+    "id": "refund-approval-controls",
+    "prompt": "Design approval, access, evidence, and review controls for refunds, vendor setup, bill payments, and journal entries in a five-person team.",
+    "expected": "internal-controls",
+    "reject": ["accounting-quality-audit", "finance-tech-stack"],
+    "reason": "This is control design, not historical-data reliability or software selection."
+  },
+  {
+    "id": "inventory-subledger-reconciliation",
+    "prompt": "Reconcile the June inventory GL to the subledger, physical count, receipts, shipments, returns, write-offs, and landed-cost policy.",
+    "expected": "inventory-cogs",
+    "reject": ["product-margin", "demand-planning"],
+    "reason": "The job is inventory accounting and reconciliation rather than product economics."
+  },
+  {
+    "id": "metric-governance",
+    "prompt": "Define formulas, owners, sources, refresh cadence, and thresholds for the founder dashboard without calculating the underlying numbers yet.",
+    "expected": "kpi-dashboard",
+    "reject": ["financial-reporting", "profit-improvement"],
+    "reason": "The request is metric governance and dashboard specification."
+  },
+  {
+    "id": "bank-line-package",
+    "prompt": "Prepare the evidence checklist and draft package for a bank line increase, including debt schedule, covenant definitions, collateral, and use of funds.",
+    "expected": "lender-investor-package",
+    "reject": ["financial-reporting", "working-capital"],
+    "reason": "The audience is an external underwriter and the package needs financing-specific evidence."
+  },
+  {
+    "id": "bfcm-finance-plan",
+    "prompt": "Build an integrated BFCM finance plan covering promo margin, inventory, fulfillment capacity, staffing, liquidity, triggers, and daily actual-versus-plan review.",
+    "expected": "peak-season-planning",
+    "reject": ["demand-planning", "pricing-profitability", "thirteen-week-cash-flow"],
+    "reason": "Peak-season planning orchestrates several specialist models around one event."
+  },
+  {
+    "id": "free-shipping-scenario",
+    "prompt": "Test whether moving free shipping from 50 dollars to 65 dollars improves contribution under bounded conversion and basket-size scenarios.",
+    "expected": "pricing-profitability",
+    "reject": ["product-margin", "profit-improvement"],
+    "reason": "This is a forward pricing-policy scenario rather than historical margin diagnosis."
+  },
+  {
+    "id": "historical-sku-waterfall",
+    "prompt": "Rank last quarter's SKUs using net revenue, landed inventory cost, outbound fulfillment, returns, payment fees, and attributable marketing.",
+    "expected": "product-margin",
+    "reject": ["pricing-profitability", "inventory-cogs"],
+    "reason": "The requested grain and period are historical SKU economics."
+  },
+  {
+    "id": "profit-lever-portfolio",
+    "prompt": "Find and prioritize our biggest profit leaks across pricing, returns, freight, ads, software, payroll, and inventory without double counting benefits.",
+    "expected": "profit-improvement",
+    "reject": ["pricing-profitability", "working-capital"],
+    "reason": "The task is cross-functional opportunity orchestration rather than one specialist lever."
+  },
+  {
+    "id": "hire-affordability",
+    "prompt": "Can we afford a customer support manager in October? Model fully loaded cost, ramp, downside cash, and volume-based hiring triggers.",
+    "expected": "staffing-plan",
+    "reject": ["budget-forecast", "cash-flow-forecast"],
+    "reason": "The decision centers on headcount economics and capacity triggers."
+  },
+  {
+    "id": "weekly-liquidity-control",
+    "prompt": "Build a rolling direct-method 13-week cash forecast from reconciled bank cash, payout dates, AP, payroll, inventory deposits, and debt dates.",
+    "expected": "thirteen-week-cash-flow",
+    "reject": ["cash-flow-forecast", "working-capital"],
+    "reason": "This is weekly tactical liquidity with dated receipts and disbursements."
+  },
+  {
+    "id": "cash-conversion-cycle",
+    "prompt": "Calculate DIO, DSO, DPO, and cash conversion cycle, then quantify inventory and supplier-term levers using our trailing-quarter balances.",
+    "expected": "working-capital",
+    "reject": ["thirteen-week-cash-flow", "inventory-cogs"],
+    "reason": "The job is structural working-capital efficiency rather than weekly cash timing."
+  },
+  {
+    "id": "board-report-not-fundraise",
+    "prompt": "Write the quarterly board finance section from verified actuals and forecast, with metric definitions, variances, risks, and decisions needed.",
+    "expected": "financial-reporting",
+    "reject": ["lender-investor-package", "kpi-dashboard"],
+    "reason": "Routine board reporting belongs to reporting; no capital request is present."
+  },
+  {
+    "id": "investor-fundraise-branch",
+    "prompt": "Draft a confidential investor finance package for a growth round, separating actuals from projections and reconciling adjusted EBITDA.",
+    "expected": "lender-investor-package",
+    "reject": ["financial-reporting", "budget-forecast"],
+    "reason": "An external financing audience requires the investor branch and its claims controls."
+  },
+  {
+    "id": "margin-definition-before-dashboard",
+    "prompt": "Our gross margin and contribution margin differ between reports; trace the definitions and source coverage before changing the KPI dashboard.",
+    "expected": "accounting-quality-audit",
+    "reject": ["kpi-dashboard", "product-margin"],
+    "reason": "Metric reliability must be resolved before dashboard governance or SKU analysis."
+  },
+  {
+    "id": "supplier-terms-not-forecast",
+    "prompt": "Quantify the cash impact of changing supplier deposits from fifty percent to thirty percent while holding purchase timing constant.",
+    "expected": "working-capital",
+    "reject": ["cash-flow-forecast", "pricing-profitability"],
+    "reason": "The isolated lever is supplier terms, a structural working-capital decision."
+  },
+  {
+    "id": "close-control-not-tech",
+    "prompt": "Test whether monthly bank reconciliations were performed and reviewed on time, record exceptions, and assess compensating controls.",
+    "expected": "internal-controls",
+    "reject": ["finance-tech-stack", "financial-reporting"],
+    "reason": "This tests control operation rather than system capability or report preparation."
+  },
+  {
+    "id": "return-cost-price-test",
+    "prompt": "Model a price increase for a high-return SKU with separate refund, reverse-logistics, write-off, and conversion scenarios.",
+    "expected": "pricing-profitability",
+    "reject": ["inventory-cogs", "channel-profitability"],
+    "reason": "The desired output is a forward price experiment with bounded behavior."
+  },
+  {
+    "id": "post-peak-reconciliation",
+    "prompt": "After BFCM, reconcile actual sales, margin, returns, inventory, and cash against the approved event plan and record lessons.",
+    "expected": "peak-season-planning",
+    "reject": ["budget-forecast", "profit-improvement"],
+    "reason": "This is the closeout phase of the defined seasonal event plan."
+  },
+  {
+    "id": "product-cost-coverage",
+    "prompt": "Show which SKUs are missing usable cost data and calculate margins only for the covered sales population without treating blanks as zero.",
+    "expected": "product-margin",
+    "reject": ["accounting-quality-audit", "kpi-dashboard"],
+    "reason": "The requested output is a covered-population SKU margin analysis."
+  },
+  {
+    "id": "processor-settlement-lag",
+    "prompt": "Map payment processor settlement lags and reserve holds, then quantify their effect on our monthly strategic cash runway.",
+    "expected": "cash-flow-forecast",
+    "reject": ["channel-profitability", "finance-tech-stack"],
+    "reason": "Settlement mechanics are inputs to a requested strategic cash forecast."
+  },
+  {
+    "id": "purchase-plan-cash-timing",
+    "prompt": "Translate the approved SKU demand forecast into purchase deposits, final payments, freight, duties, and monthly cash timing.",
+    "expected": "demand-planning",
+    "reject": ["budget-forecast", "inventory-cogs"],
+    "reason": "The work begins from SKU demand and turns it into purchase and cash timing."
+  },
+  {
+    "id": "compensation-data-boundary",
+    "prompt": "Build a department hiring plan from aggregated payroll totals without exposing employee-level compensation or personal data.",
+    "expected": "staffing-plan",
+    "reject": ["ecom-finance-context", "internal-controls"],
+    "reason": "The requested artifact is a privacy-safe headcount and payroll plan."
+  },
+  {
+    "id": "system-access-migration",
+    "prompt": "Compare two inventory systems using current official capabilities, export options, total cost, migration risk, access controls, and rollback plan.",
+    "expected": "finance-tech-stack",
+    "reject": ["internal-controls", "demand-planning"],
+    "reason": "This is a current vendor and architecture selection decision."
+  },
+  {
+    "id": "context-is-not-source-evidence",
+    "prompt": "Update our finance context with the verified reporting calendar and metric definitions, but do not copy bank balances or raw payroll data into it.",
+    "expected": "ecom-finance-context",
+    "reject": ["financial-reporting", "staffing-plan"],
+    "reason": "The request governs durable context rather than running an analysis."
+  },
+  {
+    "id": "channel-allocation-method",
+    "prompt": "Allocate shared 3PL and support costs across DTC and marketplace channels using explicit drivers and show sensitivity to the allocation method.",
+    "expected": "channel-profitability",
+    "reject": ["profit-improvement", "product-margin"],
+    "reason": "The core question is channel-level profitability and allocation confidence."
+  },
+  {
+    "id": "profit-action-register",
+    "prompt": "Turn validated specialist analyses into a profit action register with EBITDA versus cash impact, confidence, owner, dependency, and time to value.",
+    "expected": "profit-improvement",
+    "reject": ["lender-investor-package", "staffing-plan"],
+    "reason": "This orchestrates already-validated levers into a managed improvement portfolio."
+  },
+  {
+    "id": "covenant-source-required",
+    "prompt": "Calculate lender covenant headroom only from the signed agreement definitions and reconciled statements, and flag anything the evidence cannot support.",
+    "expected": "lender-investor-package",
+    "reject": ["kpi-dashboard", "working-capital"],
+    "reason": "Covenant calculations are audience-specific and agreement-controlled."
+  },
+  {
+    "id": "forecast-variance-cycle",
+    "prompt": "Reforecast the rest of the year from June actuals and explain volume, price, mix, timing, and accounting variances against budget.",
+    "expected": "budget-forecast",
+    "reject": ["financial-reporting", "cash-flow-forecast"],
+    "reason": "The primary output is an updated operating forecast and variance bridge."
+  }
+]

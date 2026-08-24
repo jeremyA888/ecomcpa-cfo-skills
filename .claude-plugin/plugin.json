@@ -1,7 +1,7 @@
 {
   "name": "ecomcpa-cfo-skills",
-  "description": "Ecommerce CFO skills for AI agents: 13-week cash flow, forecasting, reporting, KPIs, COGS, margins, working capital, lender packages, controls, and profitability",
-  "version": "0.1.0",
+  "description": "Decision-grade ecommerce CFO workflows with evidence, formula, reconciliation, and review controls",
+  "version": "0.2.0",
   "author": {
     "name": "EcomCPA"
   },

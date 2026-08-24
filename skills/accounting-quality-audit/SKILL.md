@@ -1,35 +1,52 @@
 ---
 name: accounting-quality-audit
-description: "Audit ecommerce accounting quality from a CFO decision-making perspective and determine whether the books are reliable enough for forecasting, margin analysis, cash planning, lending, board reporting, or KPI work. Use when the user asks if their numbers can be trusted, why financials look wrong, whether reports are decision-ready, or how to evaluate ecommerce finance data."
+description: "Assess whether ecommerce books are reliable for a named CFO decision, such as forecasting, margin analysis, cash planning, lending, board reporting, or KPI work. Use when the user asks whether the numbers can be trusted or why financials look wrong. For future-process control design use internal-controls; for an inventory tie-out use inventory-cogs."
+license: MIT
 ---
 
 # Accounting Quality Audit
 
-Evaluate whether ecommerce financials are decision-ready.
+Determine which decisions the books can support, with traceable evidence and purpose-specific readiness.
 
-## Start Here
+## Establish the Decision Frame
 
-Read `.agents/ecom-finance.md` if it exists. Ask for the latest P&L, balance sheet, cash flow statement, chart of accounts, sales channel reports, inventory reports, payment processor settlements, and current close checklist if available.
+- Read `.agents/ecom-finance.md` if it exists, but verify facts against current evidence.
+- State the entity or consolidation scope, reporting period and as-of date, functional/presentation currency, accounting basis, close status, and the decision the books must support.
+- Record the user's materiality threshold. If none is supplied, report every detected variance and rank by magnitude; do not silently choose what is immaterial.
+- Assess each intended use separately. Books can be adequate for liquidity monitoring yet inadequate for SKU margin or lender reporting.
 
-## Audit Areas
+## Evidence Gate
 
-- Revenue: tie sales channels, payment processors, refunds, discounts, gift cards, chargebacks, and marketplace settlements to the books.
-- COGS/inventory: verify inventory asset, COGS timing, landed costs, shrinkage, returns, and channel-specific fees.
-- Balance sheet: review cash, clearing accounts, loans, credit cards, inventory, deposits, accruals, and unusual balances.
-- Expense classification: separate ads, fulfillment, merchant fees, software, payroll, owner expenses, and one-time items.
-- Accrual quality: confirm AP, payroll, inventory receipts, prepaids, deferred revenue, and other material liabilities.
-- Close discipline: check whether reconciliations happen monthly and whether review notes are retained.
+Create a source register with `source/report`, `extract or as-of date`, `period and entity coverage`, `control total`, `tie-out status`, and `limitations`. Prefer the trial balance/general ledger, statements, bank and card reconciliations, channel order reports, processor/marketplace settlements, inventory subledger, debt schedules, payroll/AP support, and close checklist.
 
-## Output
+Label every key value `reported`, `calculated`, `assumption`, or `unavailable`. Missing is never zero. Keep actual, forecast, and scenario data separate; forecasts are not evidence that actual balances are correct. If the minimum evidence for the named decision is unavailable, stop at an `Insufficient evidence` result that lists the missing evidence and the conclusions that cannot be made.
+
+## Audit Tests
+
+- Test completeness, existence, accuracy/valuation, cutoff, classification, and rights/obligations where relevant.
+- Bridge channel gross orders through discounts, refunds, chargebacks, gift-card/deferred-revenue activity, settlements, receivables/clearing accounts, and recorded revenue. Show the formula and sign convention.
+- Tie balance-sheet accounts to independent reconciliations and inspect stale clearing items, unusual signs, unsupported journals, and post-extract changes.
+- Test inventory and COGS timing, landed-cost policy, returns, shrinkage, and subledger-to-GL differences; route a detailed tie-out to `inventory-cogs`.
+- Review expense classification, accruals, prepaids, deferred revenue, debt, payroll, owner activity, and close/reviewer evidence.
+- Confirm control equations such as `assets = liabilities + equity` and `beginning cash + net cash movement = ending cash`; explain every residual rather than forcing a tie.
+
+## Deliverable
 
 Return:
 
-1. `Decision readiness`: green, yellow, or red.
-2. `Top risks`: ordered by impact.
-3. `Evidence requested`: specific reports/files needed.
-4. `Fix queue`: immediate, next reporting cycle, and later.
-5. `Owner explanation`: plain-English summary of what the numbers can and cannot be trusted for.
+1. `Scope and evidence`: decision frame, source register, coverage, and unresolved conflicts.
+2. `Readiness by use case`: green, yellow, red, or insufficient evidence, with explicit criteria and evidence for each rating.
+3. `Findings`: account/process, assertion, reported and recalculated amounts, formula/sign convention, variance, cause or labeled hypothesis, decision impact, and confidence.
+4. `Fix queue`: immediate, next close, and later, with owner, evidence required, and completion test.
+5. `Owner explanation`: what the books can and cannot currently support in plain language.
 
-## Watchouts
+## Quality Gate
 
-Do not treat a clean P&L as proof. Ecommerce problems often hide in the balance sheet, clearing accounts, inventory, and settlement timing.
+- Every conclusion must trace to a registered source and period; every calculated figure must show inputs and formula.
+- Totals must tie to disclosed control totals or show a reconciling-items table. Never plug an unexplained variance.
+- Do not issue one overall readiness color when use cases differ, and do not treat a clean P&L as proof of a clean balance sheet.
+- Recheck whether the ledger or source report changed after extraction before calling the assessment current.
+
+## Guardrails
+
+Stage findings and proposed corrections as drafts only. Never post journal entries, alter source records, send a report, move cash, or change access. Do not present this management diagnostic as an independent financial-statement audit, review, compilation, attestation, or assurance engagement. Accounting-policy conclusions and correcting entries require review by the responsible controller or qualified accountant.

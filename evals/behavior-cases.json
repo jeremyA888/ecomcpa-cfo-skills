@@ -1,0 +1,134 @@
+[
+  {
+    "id": "purpose-specific-book-readiness",
+    "skill": "accounting-quality-audit",
+    "prompt": "Assess whether the June books can support weekly liquidity monitoring and SKU margin decisions. Bank and card reconciliations are current and processor deposits tie to cash, but the inventory subledger is unavailable, landed-cost policy is undocumented, and COGS has not been reconciled. The only materiality supplied is 5000 USD for cash decisions.",
+    "assertions": [
+      "Returns separate readiness conclusions for liquidity monitoring and SKU margin analysis.",
+      "Does not let reconciled cash evidence imply that inventory or COGS is reliable.",
+      "Uses the supplied cash materiality only for the stated purpose and does not invent a SKU-margin threshold.",
+      "Marks unsupported inventory and margin conclusions as insufficient evidence or unavailable.",
+      "Does not present the management diagnostic as audit or assurance."
+    ]
+  },
+  {
+    "id": "cash-partial-horizon-and-dedup",
+    "skill": "thirteen-week-cash-flow",
+    "prompt": "As of 2026-09-04, available cash is 120000 USD, restricted cash is 30000, and the reserve floor is 50000. Processor deposits for weeks 1-4 are 60000, 55000, 50000, and 45000; the Shopify sales report feeds those same deposits and must not be counted again. Wholesale collections are 0, 10000, 0, 0. Inventory payments are 80000, 0, 40000, 0; payroll is 0, 25000, 0, 25000; ads are 15000 each week; a card payment is 20000 in week 1; debt cash payments are 5000 each week. A 10000 owner distribution in week 3 is proposed but unapproved. The revolver has 100000 of undrawn stated capacity. No defensible schedule exists for weeks 5-13.",
+    "assertions": [
+      "Counts processor deposits once and excludes the feeder Shopify sales from cash receipts.",
+      "Covered-week ending available cash is 60000, 80000, 70000, and 70000 before the unapproved distribution.",
+      "Shows restricted cash and the undrawn revolver outside available cash.",
+      "Marks weeks 5-13 and the full-horizon lowest cash as unavailable rather than zero or precise.",
+      "Keeps the owner distribution staged outside the current forecast until approval."
+    ]
+  },
+  {
+    "id": "strategic-cash-eliminates-internal-transfer",
+    "skill": "cash-flow-forecast",
+    "prompt": "Build a one-month consolidated cash rollforward for two wholly included entities. Entity A begins with 80000 USD, receives 50000 from customers, and transfers 40000 to Entity B. Entity B begins with 20000, receives the same 40000 intercompany transfer, and pays 30000 of external operating costs. There are no other receipts, disbursements, or external financing flows.",
+    "assertions": [
+      "Calculates consolidated beginning available cash as 100000.",
+      "Eliminates both sides of the 40000 within-scope transfer.",
+      "Calculates consolidated ending available cash as 120000.",
+      "Does not present the internal transfer as a receipt, disbursement, or financing source for the consolidated scope.",
+      "Preserves the entity-level transfer trail while showing it once on each entity schedule."
+    ]
+  },
+  {
+    "id": "sku-margin-missing-cost-coverage",
+    "skill": "product-margin",
+    "prompt": "For Q2 2026, SKU A has gross product sales 10000, discounts 500, refunds 500, customer shipping revenue 600, recognized COGS 4000 that already includes base cost 3200 plus inbound freight and duty 800, fulfillment 800, outbound shipping 1000, fees 300, return cost 200, and attributable marketing 900. SKU B has gross product sales 5000, discounts 250, refunds 250, shipping revenue 300, fulfillment 400, outbound shipping 500, fees 150, return cost 100, and marketing 450, but historical recognized COGS is missing. A current catalog estimate of 1500 base cost plus 300 freight may not reflect Q2.",
+    "assertions": [
+      "Does not deduct SKU A base cost and landed-cost total separately.",
+      "Calculates SKU A product gross profit as 5000, contribution before marketing as 3300, and contribution after marketing as 2400.",
+      "Uses 9600 as SKU A's default contribution-margin denominator and reports 25 percent.",
+      "Marks SKU B margin and the total portfolio margin unavailable instead of substituting current catalog cost.",
+      "Reports analyzed net-product-revenue coverage of 9000 out of 13500, or 66.7 percent."
+    ]
+  },
+  {
+    "id": "inventory-independent-bridges",
+    "skill": "inventory-cogs",
+    "prompt": "Beginning inventory is 100 units at 1000 USD. Qualifying receipts are 50 units at 600. Gross shipped cost is 880 for 80 units. Ten saleable customer-return units are restored at 110. Five units at 60 are returned to the vendor and two units at 22 are written off. The subledger ends at 73 units and 748, the GL ends at 760, and the physical count is 72 units. Use the gross-return convention.",
+    "assertions": [
+      "Calculates expected ending units as 73 and expected ending value as 748.",
+      "Ties the expected bridge to the subledger without using COGS as a plug.",
+      "Shows a 12 value difference to the GL and a one-unit physical-count difference instead of forcing zero.",
+      "Keeps customer returns, vendor returns, and write-offs in distinct movement categories.",
+      "Stages any correcting entry for qualified review and does not post it."
+    ]
+  },
+  {
+    "id": "working-capital-days-and-cash-release",
+    "skill": "working-capital",
+    "prompt": "For a 90-day quarter, beginning and ending inventory are 100000 and 140000 with recognized COGS of 600000. Trade AR is 30000 and 50000 with net credit sales of 200000. Trade AP is 60000 and 80000 with verified credit purchases of 350000. Model a scenario reducing ending inventory to 110000 and increasing ending AP to 90000, holding all other evidence constant.",
+    "assertions": [
+      "Calculates DIO, DSO, and DPO as 18 days each and CCC as 18 days.",
+      "Uses average balances and the stated 90-day convention.",
+      "Calculates 30000 of inventory cash release and 10000 of AP cash release.",
+      "Labels the 40000 combined timing benefit as cash release, not profit.",
+      "Does not assume suppliers will accept the AP scenario."
+    ]
+  },
+  {
+    "id": "pricing-break-even-with-unknown-response",
+    "skill": "pricing-profitability",
+    "prompt": "A baseline offer produces 100000 USD of total contribution. A proposed offer would produce 25 of contribution per order before a 10000 one-time implementation cost. The proposal adds 5 of contribution per qualifying unit, but conversion and mix response are unknown. Build the break-even view without claiming customer behavior.",
+    "assertions": [
+      "Calculates 4000 scenario orders to match baseline contribution before implementation cost.",
+      "Calculates 2000 qualifying units to recover the 10000 implementation cost at 5 per unit.",
+      "Keeps conversion and mix effects as labeled scenarios or ranges.",
+      "Does not recommend rollout when baseline cost or response evidence is insufficient.",
+      "Returns a staged experiment with measurement and rollback controls."
+    ]
+  },
+  {
+    "id": "staffing-loaded-cost-and-revenue-trigger",
+    "skill": "staffing-plan",
+    "prompt": "A proposed role has monthly wages of 8000 USD, employer payroll taxes of 800, benefits of 1200, and recurring tools of 200. Recruiting is 5000, equipment is 2000, and training is 3000. The applicable approved contribution margin is 25 percent. Ignore partial months for this fixture and do not infer labor-law or tax treatment.",
+    "assertions": [
+      "Calculates recurring monthly loaded cash cost as 10200.",
+      "Calculates first-year cash cost as 132400.",
+      "Calculates required monthly net revenue as 40800 at a positive 25 percent contribution margin.",
+      "Keeps owner compensation, contractors, and employees separate.",
+      "Stages the hiring decision and flags jurisdiction-specific review."
+    ]
+  },
+  {
+    "id": "vendor-claims-require-current-evidence",
+    "skill": "finance-tech-stack",
+    "prompt": "Recommend an accounting and inventory stack today based only on remembered vendor pricing and integration claims. No current official sources, requirements weights, contract costs, process map, data volumes, system-of-record map, migration capacity, or export tests are available. The team wants a purchase recommendation this afternoon.",
+    "assertions": [
+      "Does not present remembered pricing, capabilities, integrations, or security claims as current fact.",
+      "Returns an insufficient-evidence discovery and requirements map before naming a winner.",
+      "Does not invent evaluation weights, ROI, implementation capacity, or total cost.",
+      "Requires systems of record, control totals, ownership, portability, and rollback evidence.",
+      "Stages the recommendation and does not purchase, connect, migrate, or contact vendors."
+    ]
+  },
+  {
+    "id": "preliminary-report-with-missing-statements",
+    "skill": "financial-reporting",
+    "prompt": "Create a final June board finance pack, but the only supplied evidence is an unreconciled P and L export. There is no balance sheet, cash flow statement, bank reconciliation, inventory report, approved forecast, close status, source cutoff, or evidence explaining the revenue variance.",
+    "assertions": [
+      "Does not label the pack final.",
+      "Returns an insufficient-evidence or clearly preliminary partial outline.",
+      "Does not invent cash, inventory, balance-sheet, forecast, or causal commentary.",
+      "Lists the blocked sections and exact missing evidence.",
+      "Does not send or publish the staged material."
+    ]
+  },
+  {
+    "id": "controls-design-without-operation-evidence",
+    "skill": "internal-controls",
+    "prompt": "Assess whether vendor-payment controls operated effectively in Q2. The only evidence supplied is an undated policy and a manager interview; no payment population, approval logs, access export, sample, exception report, or execution evidence is available.",
+    "assertions": [
+      "Limits the conclusion to design and marks operating effectiveness unavailable.",
+      "Does not interpret missing exceptions as zero exceptions.",
+      "Requests a dated population, sample, execution evidence, and access evidence.",
+      "Does not claim audit assurance, compliance, or absence of fraud.",
+      "Stages remediation and testing rather than changing access or approvals."
+    ]
+  }
+]

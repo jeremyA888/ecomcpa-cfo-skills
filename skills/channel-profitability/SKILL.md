@@ -1,33 +1,54 @@
 ---
 name: channel-profitability
-description: "Analyze ecommerce profitability by sales channel, marketplace, geography, customer segment, or fulfillment path. Use when the user mentions Shopify vs Amazon, wholesale vs DTC, marketplace fees, channel margin, sales channel profitability, or where growth is actually profitable."
+description: "Analyze ecommerce contribution economics by channel, marketplace, geography, customer segment, or fulfillment path. Use for Shopify versus Amazon, wholesale versus DTC, channel fees, or where growth is profitable. For SKU economics use product-margin; for inventory accounting use inventory-cogs; for a cross-business profit plan use profit-improvement."
+license: MIT
 ---
 
 # Channel Profitability
 
-Show which channels create profit, cash, and strategic value.
+Show what each channel contributes without hiding attribution limits or forcing shared costs into arbitrary precision.
 
-## Start Here
+## Establish the Decision Frame
 
-Read `.agents/ecom-finance.md` if it exists. Gather channel revenue, refunds, discounts, COGS, merchant fees, marketplace fees, fulfillment, shipping, ads, returns, chargebacks, and support costs.
+Read `.agents/ecom-finance.md` if it exists, then state the entity/consolidation scope, period and as-of date, currency, accounting basis and close status, channel dimension, decision, and the company's approved gross/contribution-margin definitions. Record user-defined materiality; if absent, report every variance without silently choosing a threshold.
 
-## Contribution View
+Route product/SKU contribution work to `product-margin`, historical inventory valuation and reconciliation to `inventory-cogs`, customer-level cohort economics to an appropriate customer-analytics workflow, and enterprise-wide opportunity prioritization to `profit-improvement`.
 
-Calculate:
+## Evidence Gate
 
-- Gross revenue.
-- Discounts, refunds, chargebacks.
-- Net revenue.
-- Product COGS and landed cost.
-- Merchant/marketplace fees.
-- Fulfillment and shipping.
-- Channel-specific ad spend.
-- Contribution margin before shared overhead.
+Create a source register with `source/report`, `extract or as-of date`, `period/entity/channel coverage`, `control total`, `tie-out status`, and `limitations`. Register channel orders, returns/discounts/chargebacks, settlements, GL revenue and COGS, inventory cost, merchant/marketplace fees, fulfillment/shipping, traceable advertising, and any support-cost driver.
 
-## Analysis
+Label every key value `reported`, `calculated`, `assumption`, or `unavailable`; missing is never zero. Separate actual, forecast, and scenario economics. If channel totals cannot reconcile to the ledger/settlement universe or product cost is unavailable, return `Insufficient evidence`, the partial view, and the decisions that remain unsupported.
 
-Separate true channel economics from accounting noise. Watch for settlement timing, mixed fulfillment costs, ad attribution limits, and returns recorded in different periods.
+## Contribution Model
 
-## Output
+Use the company's documented policy. If absent, present a definition for approval:
 
-Return a channel profitability table, key drivers, confidence level, data gaps, and recommended decisions.
+`gross product sales - discounts - product refunds/sales reversals/chargebacks = net product revenue`
+
+Exclude sales tax and other amounts collected on behalf of authorities. Show customer shipping revenue separately.
+
+`net product revenue - inventory product COGS = product gross profit`
+
+`shipping contribution = customer shipping revenue - traceable outbound shipping`
+
+`product gross profit + shipping contribution - traceable merchant/marketplace fees - traceable fulfillment - traceable channel advertising - other approved variable costs = contribution margin`
+
+State whether costs are positive deductions or signed negatives. Landed cost belongs inside product COGS when already capitalized there; never deduct it again. Separate directly traceable costs, defensible allocations, and unallocated shared overhead. Show allocation driver and formula; do not allocate shared cost merely to make channel profit sum to company net income.
+
+Align sales and returns to a disclosed order, shipment, or accounting-period convention. Expose settlement timing, mixed fulfillment, cross-channel promotions, ad-attribution windows, transfer pricing/intercompany effects, and working-capital differences. Label causal explanations without evidence as assumptions.
+
+## Deliverable
+
+Return the decision frame and source register, channel waterfall with amount and margin percent, total-company reconciliation, traceable/allocated/unallocated cost view, confidence by material line, key drivers, data gaps, and draft channel decisions. State every percentage denominator; absent an approved policy, use net product revenue for product gross margin and net product revenue plus customer shipping revenue for contribution margin. A zero or negative denominator is `not meaningful`.
+
+## Quality Gate
+
+- Channel columns sum to the disclosed sales/ledger universe or include explicit unassigned and reconciling columns.
+- Product COGS and landed cost are counted once; returns, discounts, fees, and ad costs use consistent periods.
+- Actual, forecast, and scenarios are separate, and reported values are not mixed with allocations without labels.
+- Confidence follows source quality and reconciliation coverage, not narrative certainty.
+
+## Guardrails
+
+Stage the analysis and recommendations as drafts only. Never change prices, channel settings, budgets, allocations in the ledger, send reports, move cash, or change access. Accounting-policy, transfer-pricing, tax, and material allocation decisions require review by the responsible qualified professionals.
