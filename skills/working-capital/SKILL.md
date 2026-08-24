@@ -1,6 +1,6 @@
 ---
 name: working-capital
-description: "Analyze ecommerce net working capital, inventory days, receivables, processor settlement, payables, and cash conversion. Use for structural cash-release and supplier-term decisions. Use financing-strategy for cash-versus-debt or facility selection, thirteen-week-cash-flow for weekly timing, and demand-planning for SKU purchases."
+description: "Analyze ecommerce working capital, cash conversion, inventory, receivables, payables and supplier terms. Use financing-strategy for funding, thirteen-week-cash-flow for timing, and demand-planning for SKU buys."
 license: MIT
 ---
 

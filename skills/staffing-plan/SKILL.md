@@ -1,6 +1,6 @@
 ---
 name: staffing-plan
-description: "Build ecommerce headcount, payroll, contractor, owner-compensation, capacity, and hire-affordability scenarios. Use for workforce budgets or hire timing. Use profit-improvement for broad cost reduction and thirteen-week-cash-flow for weekly liquidity effects."
+description: "Model ecommerce headcount, payroll, contractors, owner compensation, capacity, hire affordability, and timing. Use profit-improvement for broad cost reduction and thirteen-week-cash-flow for weekly liquidity."
 license: MIT
 ---
 

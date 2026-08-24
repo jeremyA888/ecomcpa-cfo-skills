@@ -9,34 +9,113 @@ These 20 skills are designed to make an agent behave like a careful finance oper
 
 ## Install
 
-Install the complete pack with the Agent Skills CLI:
+Use one installation method per client. Native plugins are recommended for team distribution; the copied-project method is useful when one private repository must expose the same files to both clients.
+
+Prerequisites: Git, network access to GitHub, and authenticated current versions of Claude Code or Codex. The optional Agent Skills method also requires Node 22.20.0 or newer. Running repository validation additionally requires Python 3.9 or newer. Run project-scoped commands from the intended authorized private repository—not from this public skill-pack checkout.
+
+The native paths follow the official [Claude Code plugin](https://code.claude.com/docs/en/discover-plugins) and [Codex plugin](https://learn.chatgpt.com/docs/build-plugins) formats.
+
+### Claude Code — native plugin
+
+From the target project root:
 
 ```bash
-npx skills add jeremyA888/ecomcpa-cfo-skills
+claude plugin marketplace add 'https://github.com/jeremyA888/ecomcpa-cfo-skills.git#v0.4.0' --scope project
+claude plugin install ecomcpa-cfo-skills@ecomcpa-cfo-skills --scope project
 ```
 
-Inspect the catalog or install selected skills:
-
-```bash
-npx skills add jeremyA888/ecomcpa-cfo-skills --list
-npx skills add jeremyA888/ecomcpa-cfo-skills --skill thirteen-week-cash-flow financing-strategy product-margin
-```
-
-For Claude Code, add this repository as a marketplace, then install the namespaced plugin:
+In Claude Code, run `/reload-plugins`, then invoke a skill with its plugin namespace:
 
 ```text
-/plugin marketplace add jeremyA888/ecomcpa-cfo-skills
-/plugin install ecomcpa-cfo-skills@ecomcpa-cfo-skills
+/ecomcpa-cfo-skills:financing-strategy Compare cash with financing for this order.
 ```
 
-Or, from the target project's root, clone to a temporary source directory and copy the skill folders into any client that supports the portable Agent Skills format:
+### Codex — native plugin
+
+Install the exact release from the repository marketplace:
 
 ```bash
-ECOMCPA_SKILLS_SOURCE="$(mktemp -d)/ecomcpa-cfo-skills"
-git clone https://github.com/jeremyA888/ecomcpa-cfo-skills.git "$ECOMCPA_SKILLS_SOURCE"
-mkdir -p .agents/skills
-cp -R "$ECOMCPA_SKILLS_SOURCE/skills/." .agents/skills/
+codex plugin marketplace add jeremyA888/ecomcpa-cfo-skills --ref v0.4.0
+codex plugin add ecomcpa-cfo-skills@ecomcpa-cfo-skills
 ```
+
+Start a new Codex session, use `/skills` to confirm discovery, and invoke the namespaced plugin skill:
+
+```text
+$ecomcpa-cfo-skills:financing-strategy Compare cash with financing for this order.
+```
+
+### One project copy for both clients
+
+This alternative installs byte copies into `.claude/skills` and `.agents/skills` and creates `skills-lock.json`. The environment variables disable the third-party installer's supported telemetry; GitHub and npm network access is still required.
+
+```bash
+DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 add \
+  'jeremyA888/ecomcpa-cfo-skills#v0.4.0' \
+  --agent claude-code \
+  --agent codex \
+  --skill '*' \
+  --copy \
+  --yes
+```
+
+PowerShell equivalent:
+
+```powershell
+$env:DO_NOT_TRACK = "1"
+$env:DISABLE_TELEMETRY = "1"
+npx --yes skills@1.5.23 add 'jeremyA888/ecomcpa-cfo-skills#v0.4.0' --agent claude-code --agent codex --skill '*' --copy --yes
+```
+
+With copied skills, invoke `/financing-strategy` in Claude Code and `$financing-strategy` in Codex. Start new sessions after installation.
+
+Inspect the catalog or install only a deliberate subset:
+
+```bash
+DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 add \
+  'jeremyA888/ecomcpa-cfo-skills#v0.4.0' --list
+DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 add \
+  'jeremyA888/ecomcpa-cfo-skills#v0.4.0' \
+  --agent claude-code --agent codex \
+  --skill thirteen-week-cash-flow financing-strategy product-margin \
+  --copy --yes
+```
+
+Do not combine a native plugin with copied folders in the same client. That creates duplicate skill entries and ambiguous update ownership.
+
+### Update or remove
+
+The Claude Code marketplace above is pinned to `v0.4.0`. To move to a later release, uninstall the plugin and remove the marketplace, then repeat the install commands with the new published tag:
+
+```bash
+claude plugin uninstall ecomcpa-cfo-skills@ecomcpa-cfo-skills --scope project
+claude plugin marketplace remove ecomcpa-cfo-skills --scope project
+```
+
+After reinstalling, run `/reload-plugins`.
+
+Codex installs above are pinned to `v0.4.0`. To move to a later release, remove the installed plugin and marketplace, then repeat the two install commands with the new published tag. Removal commands are:
+
+```bash
+codex plugin remove ecomcpa-cfo-skills@ecomcpa-cfo-skills
+codex plugin marketplace remove ecomcpa-cfo-skills
+```
+
+For copied project skills, `DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 update --project --yes` refreshes the currently pinned tag; it does not move the project to a newer release. To upgrade, rerun the add command with the new quoted `#vX.Y.Z` source. To remove only this pack without touching unrelated project skills, run this command from the private target project root. Never run the removal block inside this public skill-pack checkout.
+
+```bash
+ecomcpa_skills=(
+  accounting-quality-audit budget-forecast cash-flow-forecast channel-profitability
+  demand-planning ecom-finance-context finance-tech-stack financial-reporting
+  financing-strategy internal-controls inventory-cogs kpi-dashboard
+  lender-investor-package peak-season-planning pricing-profitability product-margin
+  profit-improvement staffing-plan thirteen-week-cash-flow working-capital
+)
+DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 remove \
+  "${ecomcpa_skills[@]}" --yes
+```
+
+See [TEAM_QUICKSTART.md](TEAM_QUICKSTART.md) for the synthetic acceptance test, privacy boundary, and troubleshooting. The release smoke used Claude Code 2.1.241 and Codex 0.149.0 on macOS; deterministic installation and validation also run on Ubuntu CI. Windows client execution remains explicitly unverified.
 
 ## Start With Governed Context
 
@@ -93,16 +172,15 @@ If a spreadsheet, document, or presentation is requested, pair the finance skill
 
 ## Validate the Pack
 
-The repository ships a dependency-free validator plus routing/coexistence and numeric/missing-evidence behavior corpora. All included cases follow a [synthetic-only data boundary](evals/README.md):
+The repository ships a dependency-free finance validator, a public-repository privacy gate, pinned Claude Code validation, and an isolated two-client installation smoke. All included cases follow a [synthetic-only data boundary](evals/README.md):
 
 ```bash
-python3 scripts/validate_skills.py
-npx skills add . --list
-claude plugin validate . --strict
-claude plugin validate ./skills --strict
+python3 scripts/validate_clients.py
 ```
 
-The validator checks Agent Skills metadata, the shared finance controls, links, manifests, catalog parity, unfinished placeholders, positive plus boundary routing coverage for every skill, and observable numeric/missing-evidence assertions for high-risk workflows. CI runs it on every pull request and push to `main`.
+That command requires Python 3.9 or newer and Node 22.20.0 or newer, and it runs exact versions `skills@1.5.23` and `@anthropic-ai/claude-code@2.1.241`. It checks Agent Skills metadata, finance controls, links, Claude and Codex manifests, catalog budget, routing coverage, behavior cases, privacy patterns, a generated lock, byte parity, safe named removal, and source-worktree immutability. CI additionally installs the native marketplace with `@openai/codex@0.149.1`, enforces command and job timeouts, and scans reachable Git history with Gitleaks.
+
+The automated behavior corpus validates fixtures and observable assertions; it does not make paid model calls. A release still requires the representative Claude Code and Codex runtime smoke in [TEAM_QUICKSTART.md](TEAM_QUICKSTART.md).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) before changing triggers, formulas, safety boundaries, or outputs.
 

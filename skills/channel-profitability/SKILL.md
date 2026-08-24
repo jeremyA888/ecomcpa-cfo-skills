@@ -1,6 +1,6 @@
 ---
 name: channel-profitability
-description: "Analyze ecommerce contribution economics by channel, marketplace, geography, customer segment, or fulfillment path. Use for Shopify versus Amazon, wholesale versus DTC, channel fees, or where growth is profitable. For SKU economics use product-margin; for inventory accounting use inventory-cogs; for a cross-business profit plan use profit-improvement."
+description: "Analyze ecommerce contribution by channel, marketplace, geography, segment, or fulfillment path. Use product-margin for SKUs, inventory-cogs for inventory accounting, and profit-improvement for broad action."
 license: MIT
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: peak-season-planning
-description: "Build an integrated ecommerce peak-season finance plan for Q4, BFCM, Prime Day, launches, or major promotions across demand, inventory, pricing, cash, staffing, fulfillment, and daily control. Use for seasonal readiness; route detailed component work to the corresponding specialist skills."
+description: "Plan ecommerce Q4, BFCM, Prime Day, launches, or promotions across demand, inventory, pricing, cash, staffing, fulfillment, and daily controls. Use specialist skills for detailed component work."
 license: MIT
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: ecom-finance-context
-description: "Create, update, or read a reusable, non-sensitive ecommerce CFO context file for an authorized brand workspace. Use to preserve finance definitions, systems, constraints, evidence status, and open questions for other CFO skills. Do not use it to store raw financials, transactions, credentials, account identifiers, or personal data."
+description: "Use to maintain non-sensitive ecommerce context in an authorized workspace: definitions, systems, constraints, evidence, and questions. Never store raw financials, credentials, account IDs, or personal data."
 license: MIT
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: financing-strategy
-description: "Compare cash, partial financing, and external capital for ecommerce inventory orders and business funding needs. Use when deciding whether to pay a PO from balance-sheet cash, draw a line, use supplier/PO/inventory/receivables financing, or choose a funding mix. Use cash-flow skills for the forecast itself and lender-investor-package for submission materials."
+description: "Choose cash, partial financing, lines, supplier/PO/inventory/receivables finance, or a funding mix for ecommerce orders. Use cash-flow skills for forecasts and lender-investor-package for submission materials."
 license: MIT
 ---
 
@@ -43,7 +43,7 @@ For each option and period, calculate:
 
 `funding gap = max(0, approved minimum reserve - ending available cash before new financing)`
 
-The minimum financing need is the gross draw that produces enough dated net usable proceeds to cover the greatest funding gap under the proposed mechanics. If a variable upfront fee is withheld, solve `gross draw = (funding gap + fixed upfront costs) / (1 - variable upfront fee rate)`, then apply commitment, borrowing-base, advance-rate, reserve, and draw-condition limits from signed terms. Add a buffer only when management supplies or approves it; do not disguise an invented cushion as policy.
+The minimum financing need is the gross draw that produces enough dated net usable proceeds to cover the greatest funding gap under the proposed mechanics. If a variable upfront fee is withheld, solve `gross draw = (funding gap + fixed upfront costs) / (1 - variable upfront fee rate)`. Round the gross draw upward to the smallest currency unit so rounded proceeds still cover the funding gap, unless verified counterparty fee-rounding mechanics support a different result; then recompute the fee and net usable proceeds from the rounded draw. Apply commitment, borrowing-base, advance-rate, reserve, and draw-condition limits from signed terms. Add a buffer only when management supplies or approves it; do not disguise an invented cushion as policy.
 
 Calculate transaction economics without treating borrowing as revenue:
 
@@ -77,6 +77,7 @@ Return the decision frame and source/term registers, dated transaction or capita
 
 - Reconcile opening cash, base forecast, order schedule, debt, and option terms to registered controls.
 - Reperform dated cash, reserve, interest, fee, break-even, and contribution calculations; no draw or principal repayment is profit or operating expense.
+- Confirm a grossed-up draw follows verified fee rounding, rounds upward by default, and still delivers at least the required net proceeds.
 - Confirm restricted cash, facility availability, processor receipts, supplier payments, and transaction costs appear once.
 - Confirm the selected option remains feasible under required downside timing and does not rely on an invented probability, renewal, waiver, or borrowing base.
 - Calculate covenant headroom only from signed definitions; do not substitute generic DSCR, fixed-charge, leverage, or borrowing-base formulas.

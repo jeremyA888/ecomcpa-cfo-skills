@@ -1,6 +1,6 @@
 ---
 name: profit-improvement
-description: "Run a cross-functional ecommerce profit-leak diagnostic and build a de-duplicated, evidence-backed improvement portfolio across price, COGS, freight, returns, ads, fulfillment, software, payroll, operations, and working capital. Use for broad profit improvement; route detailed analysis to specialist skills."
+description: "Diagnose ecommerce profit leaks and build an evidence-backed portfolio across price, COGS, freight, returns, ads, operations, payroll, and cash. Use for broad improvement; route detail to specialist skills."
 license: MIT
 ---
 

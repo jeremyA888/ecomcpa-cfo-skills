@@ -1,6 +1,6 @@
 ---
 name: kpi-dashboard
-description: "Define governed ecommerce finance KPIs, formulas, source lineage, thresholds, and dashboard layouts. Use for KPI dictionaries or dashboard specifications. Use product-margin or channel-profitability for the underlying profitability analysis, and financial-reporting for period commentary."
+description: "Define governed ecommerce finance KPIs, formulas, source lineage, thresholds, and dashboard layouts. Use product-margin or channel-profitability for analysis and financial-reporting for period commentary."
 license: MIT
 ---
 

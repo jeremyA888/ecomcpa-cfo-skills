@@ -1,6 +1,6 @@
 ---
 name: thirteen-week-cash-flow
-description: "Build, roll forward, or review a direct-method 13-week ecommerce cash forecast from bank availability, processor settlements, collections, AP, inventory, payroll, ads, debt, and owner activity. Use for weekly liquidity decisions; use cash-flow-forecast for strategic monthly planning and financing-strategy to choose the funding mix."
+description: "Build direct-method 13-week cash forecasts for weekly ecommerce liquidity across cash, receipts, AP, inventory, payroll, and debt. Use cash-flow-forecast for monthly planning and financing-strategy for funding."
 license: MIT
 ---
 

@@ -1,0 +1,20 @@
+{
+  "name": "ecomcpa-cfo-skills",
+  "interface": {
+    "displayName": "EcomCPA CFO Skills"
+  },
+  "plugins": [
+    {
+      "name": "ecomcpa-cfo-skills",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "ecomcpa-cfo-skills",
+  "version": "0.4.0",
+  "description": "Decision-grade ecommerce CFO workflows with evidence, formula, reconciliation, and review controls",
+  "author": {
+    "name": "EcomCPA",
+    "url": "https://ecomcpa.com"
+  },
+  "homepage": "https://github.com/jeremyA888/ecomcpa-cfo-skills#readme",
+  "repository": "https://github.com/jeremyA888/ecomcpa-cfo-skills",
+  "license": "MIT",
+  "keywords": ["ecommerce", "finance", "cfo", "forecasting", "financing", "profitability"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "EcomCPA CFO Skills",
+    "shortDescription": "Controlled ecommerce CFO decision workflows",
+    "longDescription": "Evidence-backed workflows for ecommerce cash, forecasts, reporting, inventory, margin, controls, financing, and capital decisions.",
+    "developerName": "EcomCPA",
+    "category": "Productivity",
+    "capabilities": ["Read"],
+    "websiteURL": "https://ecomcpa.com",
+    "defaultPrompt": [
+      "Compare cash versus financing for a supplier order.",
+      "Build a 13-week cash forecast and flag evidence gaps.",
+      "Audit whether the books support a margin decision."
+    ]
+  }
+}

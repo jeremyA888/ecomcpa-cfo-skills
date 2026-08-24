@@ -26,6 +26,8 @@ REQUIRED_HEADINGS = {
     "## Guardrails",
 }
 STATUS_LABELS = {"reported", "calculated", "assumption", "unavailable"}
+MAX_DESCRIPTION_CHARS = 210
+MAX_CATALOG_DESCRIPTION_CHARS = 4200
 
 
 def scalar(raw: str) -> str:
@@ -91,10 +93,12 @@ def validate_skills(errors: list[str]) -> set[str]:
             errors.append(f"{rel}: duplicate skill name {name!r}")
         names.add(name)
 
-        if not description or len(description) > 1024:
-            errors.append(f"{rel}: description must contain 1-1024 characters")
-        elif not re.search(r"\buse (?:when|for|to)\b", description.lower()):
-            errors.append(f"{rel}: description must say when the skill applies")
+        if not description or len(description) > MAX_DESCRIPTION_CHARS:
+            errors.append(
+                f"{rel}: description must contain 1-{MAX_DESCRIPTION_CHARS} characters"
+            )
+        elif "use" not in description.casefold().split():
+            errors.append(f"{rel}: description must include explicit Use routing guidance")
         descriptions.append(description.casefold())
 
         if metadata.get("license") != "MIT":
@@ -128,43 +132,117 @@ def validate_skills(errors: list[str]) -> set[str]:
     duplicate_descriptions = [text for text, count in Counter(descriptions).items() if count > 1]
     if duplicate_descriptions:
         errors.append("skills/: duplicate descriptions weaken skill routing")
+    total_description_chars = sum(len(text) for text in descriptions)
+    if total_description_chars > MAX_CATALOG_DESCRIPTION_CHARS:
+        errors.append(
+            "skills/: descriptions exceed the cross-client catalog budget "
+            f"({total_description_chars}>{MAX_CATALOG_DESCRIPTION_CHARS})"
+        )
     return names
 
 
 def validate_manifests(skill_names: set[str], errors: list[str]) -> None:
-    plugin_path = ROOT / ".claude-plugin" / "plugin.json"
-    marketplace_path = ROOT / ".claude-plugin" / "marketplace.json"
+    claude_plugin_path = ROOT / ".claude-plugin" / "plugin.json"
+    claude_marketplace_path = ROOT / ".claude-plugin" / "marketplace.json"
+    codex_plugin_path = ROOT / ".codex-plugin" / "plugin.json"
+    codex_marketplace_path = ROOT / ".agents" / "plugins" / "marketplace.json"
     try:
-        plugin = json.loads(plugin_path.read_text(encoding="utf-8"))
-        marketplace = json.loads(marketplace_path.read_text(encoding="utf-8"))
+        claude_plugin = json.loads(claude_plugin_path.read_text(encoding="utf-8"))
+        claude_marketplace = json.loads(claude_marketplace_path.read_text(encoding="utf-8"))
+        codex_plugin = json.loads(codex_plugin_path.read_text(encoding="utf-8"))
+        codex_marketplace = json.loads(codex_marketplace_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         errors.append(f"plugin manifests: {exc}")
         return
 
-    if plugin.get("skills") != "./skills":
-        errors.append("plugin.json: skills must point to ./skills")
-    version = plugin.get("version", "")
-    if not re.fullmatch(r"\d+\.\d+\.\d+", version):
-        errors.append("plugin.json: version must use semantic versioning")
     expected_repo = "https://github.com/jeremyA888/ecomcpa-cfo-skills"
-    if plugin.get("repository") != expected_repo:
-        errors.append("plugin.json: repository URL is not canonical")
+    if claude_plugin.get("skills") != "./skills":
+        errors.append(".claude-plugin/plugin.json: skills must point to ./skills")
+    if claude_plugin.get("repository") != expected_repo:
+        errors.append(".claude-plugin/plugin.json: repository URL is not canonical")
 
-    plugins = marketplace.get("plugins", [])
-    if len(plugins) != 1 or plugins[0].get("source") != "./":
-        errors.append("marketplace.json: expected one root plugin source")
-    description = plugins[0].get("description", "") if plugins else ""
-    if plugins and plugins[0].get("version") != version:
-        errors.append("plugin manifests: plugin version values must match")
+    claude_plugins = claude_marketplace.get("plugins", [])
+    if len(claude_plugins) != 1 or claude_plugins[0].get("source") != "./":
+        errors.append(".claude-plugin/marketplace.json: expected one root plugin source")
+    description = claude_plugins[0].get("description", "") if claude_plugins else ""
     if f"{len(skill_names)} ecommerce CFO skills" not in description:
-        errors.append("marketplace.json: plugin description has a stale skill count")
-    if marketplace.get("description", "") == "":
-        errors.append("marketplace.json: top-level description is required")
+        errors.append(".claude-plugin/marketplace.json: plugin description has a stale skill count")
+    if claude_marketplace.get("description", "") == "":
+        errors.append(".claude-plugin/marketplace.json: top-level description is required")
+
+    if codex_plugin.get("name") != "ecomcpa-cfo-skills":
+        errors.append(".codex-plugin/plugin.json: canonical name is required")
+    if codex_plugin.get("skills") != "./skills/":
+        errors.append(".codex-plugin/plugin.json: skills must point to ./skills/")
+    if codex_plugin.get("repository") != expected_repo:
+        errors.append(".codex-plugin/plugin.json: repository URL is not canonical")
+    if codex_plugin.get("author", {}).get("name") != "EcomCPA":
+        errors.append(".codex-plugin/plugin.json: author.name must be EcomCPA")
+
+    interface = codex_plugin.get("interface", {})
+    required_interface = {
+        "displayName",
+        "shortDescription",
+        "longDescription",
+        "developerName",
+        "category",
+        "capabilities",
+        "websiteURL",
+        "defaultPrompt",
+    }
+    missing_interface = sorted(required_interface - interface.keys())
+    if missing_interface:
+        errors.append(
+            ".codex-plugin/plugin.json: missing interface fields " + ", ".join(missing_interface)
+        )
+    prompts = interface.get("defaultPrompt", [])
+    if not isinstance(prompts, list) or not 1 <= len(prompts) <= 3:
+        errors.append(".codex-plugin/plugin.json: defaultPrompt must contain 1-3 prompts")
+    elif any(not isinstance(prompt, str) or len(prompt) > 128 for prompt in prompts):
+        errors.append(".codex-plugin/plugin.json: default prompts must be strings of 128 characters or fewer")
+
+    codex_plugins = codex_marketplace.get("plugins", [])
+    if codex_marketplace.get("name") != "ecomcpa-cfo-skills":
+        errors.append(".agents/plugins/marketplace.json: canonical marketplace name is required")
+    if codex_marketplace.get("interface", {}).get("displayName") != "EcomCPA CFO Skills":
+        errors.append(".agents/plugins/marketplace.json: displayName is required")
+    if len(codex_plugins) != 1:
+        errors.append(".agents/plugins/marketplace.json: expected exactly one plugin")
+    else:
+        entry = codex_plugins[0]
+        if entry.get("name") != "ecomcpa-cfo-skills":
+            errors.append(".agents/plugins/marketplace.json: plugin name is not canonical")
+        if entry.get("source") != {"source": "local", "path": "./"}:
+            errors.append(".agents/plugins/marketplace.json: source must resolve to the repository root")
+        if entry.get("policy") != {
+            "installation": "AVAILABLE",
+            "authentication": "ON_INSTALL",
+        }:
+            errors.append(".agents/plugins/marketplace.json: explicit install policy is required")
+        if entry.get("category") != "Productivity":
+            errors.append(".agents/plugins/marketplace.json: category must be Productivity")
+
+    versions = [
+        claude_plugin.get("version", ""),
+        claude_plugins[0].get("version", "") if claude_plugins else "",
+        codex_plugin.get("version", ""),
+    ]
+    if any(not re.fullmatch(r"\d+\.\d+\.\d+", version) for version in versions):
+        errors.append("plugin manifests: all versions must use semantic versioning")
+    if len(set(versions)) != 1:
+        errors.append("plugin manifests: Claude and Codex version values must match")
 
 
 def validate_readme(skill_names: set[str], errors: list[str]) -> None:
     path = ROOT / "README.md"
     text = path.read_text(encoding="utf-8")
+    try:
+        release_version = json.loads(
+            (ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8")
+        )["version"]
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+        errors.append(f"README.md: could not derive release version: {exc}")
+        release_version = ""
     linked = set(re.findall(r"\(skills/([a-z0-9-]+)/\)", text))
     if linked != skill_names:
         missing = sorted(skill_names - linked)
@@ -172,10 +250,45 @@ def validate_readme(skill_names: set[str], errors: list[str]) -> None:
         errors.append(f"README.md: skill catalog mismatch; missing={missing}, extra={extra}")
     if "after this repository is published" in text.casefold():
         errors.append("README.md: still describes the public repository as unpublished")
+    required_snippets = {
+        "$financing-strategy",
+        "/ecomcpa-cfo-skills:financing-strategy",
+        "Node 22.20.0",
+        "TEAM_QUICKSTART.md",
+        "scripts/validate_clients.py",
+    }
+    missing_snippets = sorted(snippet for snippet in required_snippets if snippet not in text)
+    if missing_snippets:
+        errors.append(f"README.md: missing client handoff details {missing_snippets}")
+    if release_version:
+        pinned_source = f"'jeremyA888/ecomcpa-cfo-skills#v{release_version}'"
+        if text.count(pinned_source) != 4:
+            errors.append(
+                "README.md: all four Agent Skills sources must use the quoted # Git-ref pin"
+            )
+        mistaken_selector = f"jeremyA888/ecomcpa-cfo-skills@v{release_version}"
+        if mistaken_selector in text:
+            errors.append("README.md: @version is a skill selector, not a Git-ref pin")
+        pinned_claude = (
+            f"'https://github.com/jeremyA888/ecomcpa-cfo-skills.git#v{release_version}'"
+        )
+        if pinned_claude not in text:
+            errors.append("README.md: Claude marketplace source must pin the release tag")
     check_links(path, text, errors)
     unfinished = UNFINISHED_RE.search(text)
     if unfinished:
         errors.append(f"README.md: unfinished marker {unfinished.group(0)!r}")
+
+    quickstart_path = ROOT / "TEAM_QUICKSTART.md"
+    try:
+        quickstart = quickstart_path.read_text(encoding="utf-8")
+    except OSError as exc:
+        errors.append(f"TEAM_QUICKSTART.md: {exc}")
+        return
+    check_links(quickstart_path, quickstart, errors)
+    for snippet in ("synthetic", "authorized private workspace", "cross-border", "advisory-only"):
+        if snippet not in quickstart.casefold():
+            errors.append(f"TEAM_QUICKSTART.md: missing required boundary {snippet!r}")
 
 
 def validate_routing_evals(skill_names: set[str], errors: list[str]) -> None:

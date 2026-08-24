@@ -167,6 +167,7 @@
     "assertions": [
       "Calculates the minimum gross draw as approximately 102040.82 using 100000 divided by 0.98.",
       "Calculates the withheld fee as approximately 2040.82 and net usable proceeds as 100000.",
+      "Rounds the gross draw up to the smallest currency unit unless verified lender fee rounding guarantees the required net proceeds.",
       "Does not use a 100000 gross draw because that would deliver only 98000 and underfund the reserve by 2000.",
       "Checks the gross draw against the verified unused commitment without calling the commitment cash.",
       "Does not invent interest, maturity, covenant, collateral, guarantee, or repayment conclusions absent those terms.",

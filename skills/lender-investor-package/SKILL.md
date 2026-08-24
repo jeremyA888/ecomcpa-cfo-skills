@@ -1,6 +1,6 @@
 ---
 name: lender-investor-package
-description: "Prepare evidence packages for ecommerce lenders or investors, including historical financials, projections, use of funds, debt, covenants, collateral, and risks. Use for financing diligence or covenant support after the financing path is selected. Use financing-strategy to compare cash and funding options; route routine reporting to financial-reporting."
+description: "Prepare ecommerce lender or investor packages with historicals, projections, uses, debt, covenants, collateral, and risks. Use financing-strategy to select funding and financial-reporting for routine reports."
 license: MIT
 ---
 

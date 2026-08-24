@@ -1,6 +1,6 @@
 ---
 name: pricing-profitability
-description: "Model forward-looking ecommerce price, discount, promotion, bundle, subscription, shipping-threshold, and surcharge decisions. Use when comparing pricing scenarios or designing a controlled test. Use product-margin first for historical SKU economics and channel-profitability for channel allocation."
+description: "Model future ecommerce prices, discounts, promotions, bundles, subscriptions, shipping thresholds, surcharges and tests. Use product-margin for historical SKU economics and channel-profitability for allocation."
 license: MIT
 ---
 

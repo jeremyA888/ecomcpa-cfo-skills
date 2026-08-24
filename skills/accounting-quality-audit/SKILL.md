@@ -1,6 +1,6 @@
 ---
 name: accounting-quality-audit
-description: "Assess whether ecommerce books are reliable for a named CFO decision, such as forecasting, margin analysis, cash planning, lending, board reporting, or KPI work. Use when the user asks whether the numbers can be trusted or why financials look wrong. For future-process control design use internal-controls; for an inventory tie-out use inventory-cogs."
+description: "Audit ecommerce book reliability for forecasts, margin, cash, lending, board, or KPI decisions; diagnose untrusted financials. Use internal-controls for controls and inventory-cogs for inventory tie-outs."
 license: MIT
 ---
 

@@ -29,12 +29,9 @@ Use synthetic data in examples and evaluations. Do not commit credentials, perso
 Run before handing off changes:
 
 ```bash
-python3 scripts/validate_skills.py
-npx skills add . --list
-claude plugin validate . --strict
-claude plugin validate ./skills --strict
+python3 scripts/validate_clients.py
 ```
 
-If a client is unavailable, report that check as unrun. For substantial skill changes, forward-test realistic synthetic prompts and inspect calculations, missing-data behavior, routing, and authorization—not merely headings.
+The script requires Python 3.9 or newer and Node 22.20.0 or newer. It runs pinned structural, privacy, Claude Code, Codex-discovery, and isolated two-client copy-install checks without model calls. For substantial skill changes, forward-test realistic synthetic prompts in both clients and inspect calculations, missing-data behavior, routing, and authorization—not merely headings. Use [TEAM_QUICKSTART.md](TEAM_QUICKSTART.md) as the release smoke.
 
-Keep the SemVer value identical in `.claude-plugin/plugin.json` and the marketplace plugin entry. Any published behavioral change requires a version bump; create the matching Git tag when cutting a release.
+Keep the SemVer value identical in both plugin manifests and the Claude marketplace entry. Any published behavioral change requires a version bump; create the matching Git tag when cutting a release.

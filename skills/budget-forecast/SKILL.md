@@ -1,6 +1,6 @@
 ---
 name: budget-forecast
-description: "Build ecommerce operating budgets, reforecasts, scenario plans, and budget-versus-actual analysis. Use for an integrated financial plan or management variance review. For SKU demand and purchase timing use demand-planning; for monthly liquidity use cash-flow-forecast; for tactical weekly cash use thirteen-week-cash-flow."
+description: "Build ecommerce budgets, reforecasts, scenarios, and budget-versus-actual reviews. Use demand-planning for SKU purchasing, cash-flow-forecast for monthly cash, and thirteen-week-cash-flow for weekly cash."
 license: MIT
 ---
 

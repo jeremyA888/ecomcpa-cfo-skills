@@ -34,15 +34,12 @@ Any trigger or scope change must update [evals/routing-cases.json](evals/routing
 Run all repository checks before opening a pull request:
 
 ```bash
-python3 scripts/validate_skills.py
-npx skills add . --list
-claude plugin validate . --strict
-claude plugin validate ./skills --strict
+python3 scripts/validate_clients.py
 ```
 
-`scripts/validate_skills.py` uses only the Python standard library. The other two commands are optional when those clients are unavailable; state which checks you could not run.
+The script uses the Python 3.9-or-newer standard library plus pinned npm client packages and requires Node 22.20.0 or newer. It performs privacy, structure, manifest, catalog, routing, fixture, client-discovery, byte-parity, and source-immutability checks without making model calls. If a required client validator is unavailable, report that check as unrun rather than weakening the gate.
 
-For a changed or substantially expanded skill, also run a realistic forward-use test with synthetic data. Review the resulting artifact—not merely whether a heading or phrase appeared. Verify calculations, source lineage, missing-data behavior, routing, and authorization boundaries.
+For a changed or substantially expanded skill, also run the [team acceptance smoke](TEAM_QUICKSTART.md) with synthetic data in Claude Code and Codex. Review the resulting artifact—not merely whether a heading or phrase appeared. Verify calculations, source lineage, missing-data behavior, routing, and authorization boundaries.
 
 ## Pull Request Checklist
 
@@ -51,5 +48,5 @@ For a changed or substantially expanded skill, also run a realistic forward-use 
 - [ ] Formulas, cost classifications, and metric definitions cannot double count or hide missing coverage.
 - [ ] Deliverables identify sources, assumptions, reconciliation status, decisions, owners, and open evidence.
 - [ ] No credentials, personal data, customer data, raw client financials, or proprietary client facts are included.
-- [ ] The routing corpus and plugin manifests are updated when behavior changes.
+- [ ] The routing corpus and both Claude and Codex plugin manifests are updated when behavior changes.
 - [ ] All available validation and forward-use checks pass.

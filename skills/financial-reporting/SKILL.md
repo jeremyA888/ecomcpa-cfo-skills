@@ -1,6 +1,6 @@
 ---
 name: financial-reporting
-description: "Create evidence-backed ecommerce management reporting packs and period commentary from supplied financials. Use for monthly results, executive finance summaries, and internal or board reporting. For dashboard specifications use kpi-dashboard; for financing/covenant packages use lender-investor-package; for unreliable books use accounting-quality-audit."
+description: "Create evidence-backed ecommerce monthly results, summaries, and board reports. Use kpi-dashboard for dashboards, lender-investor-package for financing, and accounting-quality-audit for unreliable books."
 license: MIT
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: inventory-cogs
-description: "Reconcile ecommerce inventory units/value, COGS, landed cost, returns, shrinkage, freight, 3PL activity, and inventory accounting. Use for historical GL/subledger/physical-count tie-outs and valuation issues. For future replenishment use demand-planning; for SKU contribution economics use product-margin; for working-capital strategy use working-capital."
+description: "Reconcile ecommerce inventory and COGS across units, value, landed cost, shrinkage, 3PL, GL, and counts. Use demand-planning for buying, product-margin for SKU economics, and working-capital for cash strategy."
 license: MIT
 ---
 

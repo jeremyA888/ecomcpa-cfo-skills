@@ -1,6 +1,6 @@
 ---
 name: demand-planning
-description: "Translate an ecommerce unit forecast into SKU replenishment, purchase timing, stockout/overstock risk, and inventory cash needs. Use for demand plans, reorder points, launch quantities, or PO timing. Use financing-strategy for cash-versus-financing the order, inventory-cogs for historical reconciliation, and peak-season-planning for event-wide planning."
+description: "Plan ecommerce SKU demand, replenishment, reorder points, launch quantities, PO timing, and inventory risk. Use financing-strategy for funding, inventory-cogs for tie-outs, and peak-season-planning for events."
 license: MIT
 ---
 

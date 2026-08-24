@@ -1,6 +1,6 @@
 ---
 name: product-margin
-description: "Calculate historical ecommerce SKU, variant, bundle, or collection economics using a controlled revenue-to-contribution ladder. Use to rank products, diagnose cost drivers, or establish a pricing baseline. Use pricing-profitability for future price scenarios and inventory-cogs for reconciliation or cost-policy repair."
+description: "Calculate historical ecommerce SKU, variant, bundle, or collection economics through contribution; rank products and costs. Use pricing-profitability for future prices and inventory-cogs for reconciliation."
 license: MIT
 ---
 

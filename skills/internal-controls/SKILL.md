@@ -1,6 +1,6 @@
 ---
 name: internal-controls
-description: "Assess or design ecommerce finance controls for approvals, reconciliations, access, fraud/error prevention, segregation of duties, close review, or audit-readiness preparation. Use for process-risk and control-matrix work. For whether historical books are decision-ready use accounting-quality-audit; for finance-system architecture use finance-tech-stack."
+description: "Design ecommerce finance controls for approvals, reconciliations, access, fraud, duty separation, close review, and audit readiness. Use accounting-quality-audit for books and finance-tech-stack for systems."
 license: MIT
 ---
 

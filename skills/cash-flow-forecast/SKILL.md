@@ -1,6 +1,6 @@
 ---
 name: cash-flow-forecast
-description: "Build or review a strategic monthly ecommerce cash forecast across inventory, payroll, debt, advertising, launches, and growth. Use for medium-term liquidity and runway. For tactical weekly cash use thirteen-week-cash-flow; for an integrated plan use budget-forecast; to choose cash versus a financing arrangement use financing-strategy."
+description: "Build monthly ecommerce cash forecasts for liquidity and runway. Use thirteen-week-cash-flow for weekly timing, budget-forecast for integrated plans, and financing-strategy for cash-versus-financing choices."
 license: MIT
 ---
 

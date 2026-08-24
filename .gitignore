@@ -1,8 +1,32 @@
+# Client-generated project installs and private runtime context.
 .DS_Store
 Icon?
 *.log
 node_modules/
-__pycache__/
-*.py[cod]
+/.agents/*
+!/.agents/plugins/
+!/.agents/plugins/marketplace.json
+/.claude/
+/.codex/
+/skills-lock.json
+
+# Local secrets and business-data exports do not belong in this public pack.
 .env
 .env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.pdf
+*.zip
+*.db
+*.sqlite
+*.sqlite3
+credentials*.json
+service-account*.json
+__pycache__/
+*.py[cod]

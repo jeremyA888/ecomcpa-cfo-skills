@@ -1,6 +1,6 @@
 ---
 name: finance-tech-stack
-description: "Audit or design ecommerce finance-system architecture across accounting, channel connectors, inventory, payroll, spend, forecasting, reporting, and integrations. Use for requirements, tool selection, system-of-record design, or migration planning. For book reliability use accounting-quality-audit; for control design use internal-controls."
+description: "Audit or design ecommerce finance systems, integrations, and migrations across accounting and operations. Use accounting-quality-audit for book reliability and internal-controls for control design."
 license: MIT
 ---
 
