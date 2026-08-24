@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 import sys
@@ -126,7 +127,23 @@ def content_issues(path: Path, data: bytes) -> list[str]:
 
 def metadata_issues() -> list[str]:
     issues: list[str] = []
-    emails = run_git("log", "--all", "--format=%ae%n%ce").decode("utf-8").splitlines()
+    synthetic_pr_sha = ""
+    if os.environ.get("GITHUB_EVENT_NAME") == "pull_request":
+        candidate_sha = os.environ.get("GITHUB_SHA", "")
+        if re.fullmatch(r"[0-9a-fA-F]{40}", candidate_sha):
+            # GitHub creates a temporary PR merge commit outside the repository's
+            # authoritative branches and tags. Its parents remain fully scanned.
+            synthetic_pr_sha = candidate_sha.casefold()
+
+    records = run_git(
+        "log", "--all", "--format=%H%x1f%ae%x1f%ce%x1e"
+    ).decode("utf-8").split("\x1e")
+    emails: list[str] = []
+    for record in records:
+        fields = record.strip().split("\x1f")
+        if len(fields) != 3 or fields[0].casefold() == synthetic_pr_sha:
+            continue
+        emails.extend(fields[1:])
     exposed = sorted({email for email in emails if email and not email.endswith("@users.noreply.github.com")})
     if exposed:
         issues.append("commit metadata contains an email other than a GitHub noreply address")
