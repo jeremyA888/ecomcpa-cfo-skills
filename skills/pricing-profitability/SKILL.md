@@ -49,11 +49,11 @@ Return:
 
 ## Quality Gate
 
-- Recalculate unit and order economics and tie aggregate actuals to control totals.
-- Confirm no cost is omitted or counted twice across product cost, landed additions, fulfillment, shipping, fees, returns, and marketing.
-- Confirm tax, shipping revenue, discounts, refunds, and bundles use consistent definitions.
-- Confirm scenario response is visibly an assumption and actual, forecast, and scenario are not mixed.
-- Confirm the proposed test can measure contribution and customer behavior without unsupported attribution claims.
+- Unit and order economics foot, and aggregate actuals tie to control totals.
+- No cost is omitted or counted twice across product cost, landed additions, fulfillment, shipping, fees, returns, and marketing.
+- Tax, shipping revenue, discounts, refunds, and bundles use consistent definitions.
+- Scenario response is visibly an assumption, and actual, forecast, and scenario are not mixed.
+- The proposed test can measure contribution and customer behavior without unsupported attribution claims.
 
 ## Guardrails
 

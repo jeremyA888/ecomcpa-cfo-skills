@@ -9,6 +9,7 @@ Contributions are welcome when they make an ecommerce finance workflow more reli
 - State overlap boundaries inside the skill: name the neighboring skill and the decision that separates them.
 - Add only domain guidance that changes an agent's behavior. Avoid generic finance explanations and decorative process.
 - Keep instructions self-contained and under 200 lines. Use `references/` only when conditional detail would otherwise bloat every invocation.
+- Phrase `Quality Gate` items as properties of the finished deliverable ("Each week cross-foots"), not as re-check instructions ("Confirm...", "Reperform..."). Current models verify against stated criteria on their own; re-check wording adds redundant verification passes and self-graded checklists to the output.
 - Preserve the MIT license declaration in each skill.
 
 ## Decision-Grade Requirements

@@ -50,11 +50,11 @@ Before recommending liquidation or discontinuation, show inventory age, cash rec
 
 ## Quality Gate
 
-- Cross-foot the ladder and tie net revenue, units, and COGS to control totals.
-- Confirm product cost and landed cost are not double counted.
-- Confirm shipping recovery, returns, bundles, fees, and marketing are treated consistently across SKUs.
-- Confirm actual, forecast, and scenario remain separate and no unavailable input appears as zero.
-- Confirm recommendations reflect evidence coverage and strategic dependencies, not rank alone.
+- The ladder cross-foots, and net revenue, units, and COGS tie to control totals.
+- Product cost and landed cost are counted once.
+- Shipping recovery, returns, bundles, fees, and marketing are treated consistently across SKUs.
+- Actual, forecast, and scenario remain separate, and no unavailable input appears as zero.
+- Recommendations reflect evidence coverage and strategic dependencies, not rank alone.
 
 ## Guardrails
 

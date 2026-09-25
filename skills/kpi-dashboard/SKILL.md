@@ -58,11 +58,11 @@ Return:
 
 ## Quality Gate
 
-- Recalculate sample rows and confirm totals tie to their controls.
-- Confirm every displayed target and variance has a named source and period.
-- Confirm metric names cannot mask different formulas across cards, periods, or channels.
-- Confirm freshness and coverage are visible on the dashboard, not buried in notes.
-- Confirm no unavailable value is rendered as zero and no actual is mixed with forecast or scenario.
+- Sample rows reproduce from their stated formulas, and totals tie to their controls.
+- Every displayed target and variance has a named source and period.
+- No metric name masks different formulas across cards, periods, or channels.
+- Freshness and coverage are visible on the dashboard, not buried in notes.
+- No unavailable value is rendered as zero, and no actual is mixed with forecast or scenario.
 
 ## Guardrails
 

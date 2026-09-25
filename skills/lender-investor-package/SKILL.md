@@ -56,11 +56,11 @@ Return a staged package containing:
 
 ## Quality Gate
 
-- Cross-foot every table and tie opening/closing balances and TTM amounts to controls.
-- Confirm forecast statements are internally linked and use of funds matches the financing request.
-- Confirm covenant names, formulas, periods, and thresholds match signed agreements.
-- Confirm non-GAAP measures are clearly labeled and reconciled; no unsupported superlatives or performance claims appear.
-- Confirm confidential, personal, bank, tax, payroll, and customer data is minimized and correctly permissioned.
+- Every table cross-foots, and opening/closing balances and TTM amounts tie to controls.
+- Forecast statements are internally linked, and use of funds matches the financing request.
+- Covenant names, formulas, periods, and thresholds match signed agreements.
+- Non-GAAP measures are clearly labeled and reconciled; no unsupported superlatives or performance claims appear.
+- Confidential, personal, bank, tax, payroll, and customer data is minimized and correctly permissioned.
 
 ## Guardrails
 

@@ -62,11 +62,11 @@ Return:
 
 ## Quality Gate
 
-- Cross-foot each week and confirm every next-week beginning balance equals the prior ending balance.
-- Tie opening and actual cash to reconciled bank control totals and eliminate transfers.
-- Trace every material forecast row to a dated source or visible assumption.
-- Confirm processor/channel receipts, cards, debt, and owner activity are not double counted or incorrectly netted.
-- Confirm actual, prior forecast, current forecast, and scenario remain separate and no unavailable value is zero.
+- Each week cross-foots, and every next-week beginning balance equals the prior ending balance.
+- Opening and actual cash tie to reconciled bank control totals, with transfers eliminated.
+- Every material forecast row traces to a dated source or visible assumption.
+- Processor/channel receipts, cards, debt, and owner activity are neither double counted nor incorrectly netted.
+- Actual, prior forecast, current forecast, and scenario remain separate, and no unavailable value is zero.
 
 ## Guardrails
 

@@ -48,11 +48,11 @@ Return:
 
 ## Quality Gate
 
-- Tie actual headcount, payroll, benefits, and contractors to control totals without exposing unnecessary PII.
-- Reperform loaded-cost, partial-period, capacity, and affordability calculations.
-- Confirm no role or cost is duplicated across employee, contractor, agency, and owner categories.
-- Confirm actual, forecast, and scenario are separate and no unavailable burden or benefit is treated as zero.
-- Confirm the recommendation considers service, quality, controls, management load, legal constraints, and downside cash—not financial ratios alone.
+- Actual headcount, payroll, benefits, and contractors tie to control totals without exposing unnecessary PII.
+- Loaded-cost, partial-period, capacity, and affordability calculations show the inputs and formulas a reviewer needs to reperform them.
+- No role or cost is duplicated across employee, contractor, agency, and owner categories.
+- Actual, forecast, and scenario are separate, and no unavailable burden or benefit is treated as zero.
+- The recommendation considers service, quality, controls, management load, legal constraints, and downside cash—not financial ratios alone.
 
 ## Guardrails
 

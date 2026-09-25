@@ -47,11 +47,11 @@ Return:
 
 ## Quality Gate
 
-- Tie the starting profit and cash baselines to closed control totals.
-- Reperform calculations and confirm all benefits are net of stated costs and offsets.
-- Confirm no volume, cost, or benefit appears in two levers or specialist analyses.
-- Confirm working-capital release is not mislabeled as profit and cost cuts do not silently assume unchanged demand or service.
-- Confirm actual, forecast, and scenario are separate and every estimate is supported or visibly unavailable.
+- Starting profit and cash baselines tie to closed control totals.
+- Every benefit shows its inputs and formula and is net of stated costs and offsets.
+- No volume, cost, or benefit appears in two levers or specialist analyses.
+- Working-capital release is not labeled as profit, and cost cuts do not silently assume unchanged demand or service.
+- Actual, forecast, and scenario are separate, and every estimate is supported or visibly unavailable.
 
 ## Guardrails
 

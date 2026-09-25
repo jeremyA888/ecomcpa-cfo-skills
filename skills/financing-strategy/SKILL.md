@@ -75,13 +75,13 @@ Return the decision frame and source/term registers, dated transaction or capita
 
 ## Quality Gate
 
-- Reconcile opening cash, base forecast, order schedule, debt, and option terms to registered controls.
-- Reperform dated cash, reserve, interest, fee, break-even, and contribution calculations; no draw or principal repayment is profit or operating expense.
-- Confirm a grossed-up draw follows verified fee rounding, rounds upward by default, and still delivers at least the required net proceeds.
-- Confirm restricted cash, facility availability, processor receipts, supplier payments, and transaction costs appear once.
-- Confirm the selected option remains feasible under required downside timing and does not rely on an invented probability, renewal, waiver, or borrowing base.
+- Opening cash, base forecast, order schedule, debt, and option terms reconcile to registered controls.
+- Dated cash, reserve, interest, fee, break-even, and contribution calculations show the inputs and formulas a reviewer needs to reperform them; no draw or principal repayment is profit or operating expense.
+- A grossed-up draw follows verified fee rounding, rounds upward by default, and still delivers at least the required net proceeds.
+- Restricted cash, facility availability, processor receipts, supplier payments, and transaction costs each appear once.
+- The selected option remains feasible under required downside timing and relies on no invented probability, renewal, waiver, or borrowing base.
 - Calculate covenant headroom only from signed definitions; do not substitute generic DSCR, fixed-charge, leverage, or borrowing-base formulas.
-- Confirm current term evidence, confidentiality, and qualified accounting, tax, legal, and lender review needs are visible.
+- Current term evidence, confidentiality, and qualified accounting, tax, legal, and lender review needs are visible.
 
 ## Guardrails
 

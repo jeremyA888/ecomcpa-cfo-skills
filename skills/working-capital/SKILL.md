@@ -54,11 +54,11 @@ Return:
 
 ## Quality Gate
 
-- Tie all included balances and period flows to closed control totals.
-- Reperform average-balance, turns, days, CCC, and cash-release formulas using the stated day count.
-- Confirm processor lag, trade AR, inventory in transit, AP, deposits, and financing are classified once.
-- Confirm working-capital cash release is not labeled profit and financing availability matches signed evidence.
-- Confirm actual, forecast, and scenario remain separate and no unavailable input appears as zero.
+- All included balances and period flows tie to closed control totals.
+- Average-balance, turns, days, CCC, and cash-release results reproduce from the shown inputs and the stated day count.
+- Processor lag, trade AR, inventory in transit, AP, deposits, and financing are each classified once.
+- Working-capital cash release is not labeled profit, and financing availability matches signed evidence.
+- Actual, forecast, and scenario remain separate, and no unavailable input appears as zero.
 
 ## Guardrails
 

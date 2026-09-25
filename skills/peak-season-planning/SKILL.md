@@ -49,11 +49,11 @@ Return:
 
 ## Quality Gate
 
-- Confirm every specialist schedule uses the same event dates, scenarios, currency, and metric definitions.
-- Recalculate unit, margin, inventory, and cash bridges and tie their controls.
-- Confirm no sales order, processor payout, inventory unit, or cost is double counted across channels or systems.
-- Confirm downside liquidity and capacity triggers occur early enough for an actionable response.
-- Confirm actual, forecast, and scenario remain visibly separate and no unavailable input appears as zero.
+- Every specialist schedule uses the same event dates, scenarios, currency, and metric definitions.
+- Unit, margin, inventory, and cash bridges foot and tie to their controls.
+- No sales order, processor payout, inventory unit, or cost is double counted across channels or systems.
+- Downside liquidity and capacity triggers occur early enough for an actionable response.
+- Actual, forecast, and scenario remain visibly separate, and no unavailable input appears as zero.
 
 ## Guardrails
 
