@@ -20,7 +20,7 @@ The native paths follow the official [Claude Code plugin](https://code.claude.co
 From the target project root:
 
 ```bash
-claude plugin marketplace add 'https://github.com/jeremyA888/ecomcpa-cfo-skills.git#v0.4.0' --scope project
+claude plugin marketplace add 'https://github.com/jeremyA888/ecomcpa-cfo-skills.git#v0.4.1' --scope project
 claude plugin install ecomcpa-cfo-skills@ecomcpa-cfo-skills --scope project
 ```
 
@@ -35,7 +35,7 @@ In Claude Code, run `/reload-plugins`, then invoke a skill with its plugin names
 Install the exact release from the repository marketplace:
 
 ```bash
-codex plugin marketplace add jeremyA888/ecomcpa-cfo-skills --ref v0.4.0
+codex plugin marketplace add jeremyA888/ecomcpa-cfo-skills --ref v0.4.1
 codex plugin add ecomcpa-cfo-skills@ecomcpa-cfo-skills
 ```
 
@@ -51,7 +51,7 @@ This alternative installs byte copies into `.claude/skills` and `.agents/skills`
 
 ```bash
 DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 add \
-  'jeremyA888/ecomcpa-cfo-skills#v0.4.0' \
+  'jeremyA888/ecomcpa-cfo-skills#v0.4.1' \
   --agent claude-code \
   --agent codex \
   --skill '*' \
@@ -64,7 +64,7 @@ PowerShell equivalent:
 ```powershell
 $env:DO_NOT_TRACK = "1"
 $env:DISABLE_TELEMETRY = "1"
-npx --yes skills@1.5.23 add 'jeremyA888/ecomcpa-cfo-skills#v0.4.0' --agent claude-code --agent codex --skill '*' --copy --yes
+npx --yes skills@1.5.23 add 'jeremyA888/ecomcpa-cfo-skills#v0.4.1' --agent claude-code --agent codex --skill '*' --copy --yes
 ```
 
 With copied skills, invoke `/financing-strategy` in Claude Code and `$financing-strategy` in Codex. Start new sessions after installation.
@@ -73,9 +73,9 @@ Inspect the catalog or install only a deliberate subset:
 
 ```bash
 DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 add \
-  'jeremyA888/ecomcpa-cfo-skills#v0.4.0' --list
+  'jeremyA888/ecomcpa-cfo-skills#v0.4.1' --list
 DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 add \
-  'jeremyA888/ecomcpa-cfo-skills#v0.4.0' \
+  'jeremyA888/ecomcpa-cfo-skills#v0.4.1' \
   --agent claude-code --agent codex \
   --skill thirteen-week-cash-flow financing-strategy product-margin \
   --copy --yes
@@ -85,7 +85,7 @@ Do not combine a native plugin with copied folders in the same client. That crea
 
 ### Update or remove
 
-The Claude Code marketplace above is pinned to `v0.4.0`. To move to a later release, uninstall the plugin and remove the marketplace, then repeat the install commands with the new published tag:
+The Claude Code marketplace above is pinned to `v0.4.1`. To move to a later release, uninstall the plugin and remove the marketplace, then repeat the install commands with the new published tag:
 
 ```bash
 claude plugin uninstall ecomcpa-cfo-skills@ecomcpa-cfo-skills --scope project
@@ -94,7 +94,7 @@ claude plugin marketplace remove ecomcpa-cfo-skills --scope project
 
 After reinstalling, run `/reload-plugins`.
 
-Codex installs above are pinned to `v0.4.0`. To move to a later release, remove the installed plugin and marketplace, then repeat the two install commands with the new published tag. Removal commands are:
+Codex installs above are pinned to `v0.4.1`. To move to a later release, remove the installed plugin and marketplace, then repeat the two install commands with the new published tag. Removal commands are:
 
 ```bash
 codex plugin remove ecomcpa-cfo-skills@ecomcpa-cfo-skills
@@ -115,7 +115,7 @@ DO_NOT_TRACK=1 DISABLE_TELEMETRY=1 npx --yes skills@1.5.23 remove \
   "${ecomcpa_skills[@]}" --yes
 ```
 
-See [TEAM_QUICKSTART.md](TEAM_QUICKSTART.md) for the synthetic acceptance test, privacy boundary, and troubleshooting. The release smoke used Claude Code 2.1.241 and Codex 0.149.0 on macOS; deterministic installation and validation also run on Ubuntu CI. Windows client execution remains explicitly unverified.
+See [TEAM_QUICKSTART.md](TEAM_QUICKSTART.md) for the synthetic acceptance test, privacy boundary, and troubleshooting. The v0.4.1 release smoke used Claude Code 2.1.282 with Claude Opus 5.5 and Codex 0.156.1 on macOS; deterministic installation and validation also run on Ubuntu CI. Windows client execution remains explicitly unverified.
 
 ## Start With Governed Context
 
