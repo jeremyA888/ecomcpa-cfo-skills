@@ -10,6 +10,8 @@ Contributions are welcome when they make an ecommerce finance workflow more reli
 - Add only domain guidance that changes an agent's behavior. Avoid generic finance explanations and decorative process.
 - Keep instructions self-contained and under 200 lines. Use `references/` only when conditional detail would otherwise bloat every invocation.
 - Phrase `Quality Gate` items as properties of the finished deliverable ("Each week cross-foots"), not as re-check instructions ("Confirm...", "Reperform..."). Current models verify against stated criteria on their own; re-check wording adds redundant verification passes and self-graded checklists to the output.
+- Keep the execution contract self-contained in each skill so selective installations retain scope, source/instruction boundaries, missing-sibling behavior, and concise evidence-backed output.
+- Keep model choices and dated provider documentation in [MODEL_GUIDANCE.md](MODEL_GUIDANCE.md); do not pin a model or change client settings from a skill. Separate documented model availability from actual smoke results.
 - Preserve the MIT license declaration in each skill.
 
 ## Decision-Grade Requirements
